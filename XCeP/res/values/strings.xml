@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    
     <string name="app_name">XCeP</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="Username">Nome</string>
+    <string name="Password">Contrasinal</string>
+    <string name="LoginBtn">Iniciar sesión</string>
+    <string name="SignupBtn">Rexistrarse</string>
+    <string name="LogoutBtn">Desconectarse</string>
+    <string name="Welcome">As miñas listas</string>
+    <string name="action_settings">Configuracion</string>
 
 </resources>
