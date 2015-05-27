@@ -4,6 +4,7 @@ package com.irina.xcep;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 
 import com.parse.ParseAnonymousUtils;
 import com.parse.ParseUser;
@@ -14,7 +15,7 @@ public class SplashActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // setContentView(R.layout.activity_splash);
+       setContentView(R.layout.activity_splash);
      // Determine whether the current user is an anonymous user
      		if (ParseAnonymousUtils.isLinked(ParseUser.getCurrentUser())) {
      			// If user is anonymous, send the user to LoginSignupActivity.class
@@ -39,13 +40,13 @@ public class SplashActivity extends Activity {
      		}
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.splash, menu);
-//        return true;
-//    }
-//
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.splash, menu);
+        return true;
+    }
+
 //    @Override
 //    public boolean onOptionsItemSelected(MenuItem item) {
 //        // Handle action bar item clicks here. The action bar will

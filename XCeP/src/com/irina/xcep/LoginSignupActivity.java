@@ -15,7 +15,7 @@ import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
 public class LoginSignupActivity extends Activity {
-	// Declare Variables
+	//Declaramos as variables
 	Button loginbutton;
 	Button signup;
 	String usernametxt;
@@ -23,7 +23,7 @@ public class LoginSignupActivity extends Activity {
 	EditText password;
 	EditText username;
 
-	/** Called when the activity is first created. */
+	/** Chamase cando creouse por primera vez a actividad */
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// Get the view from main.xml

@@ -1,4 +1,4 @@
-package com.irina.xcep;
+package com.irina.xcep.parse;
 
 import com.parse.Parse;
 import com.parse.ParseACL;
