@@ -28,7 +28,7 @@ public class SplashActivity extends Activity {
      			ParseUser currentUser = ParseUser.getCurrentUser();
      			if (currentUser != null) {
      				// Send logged in users to Welcome.class
-     				Intent intent = new Intent(SplashActivity.this, Welcome.class);
+     				Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
      				startActivity(intent);
      				finish();
      			} else {

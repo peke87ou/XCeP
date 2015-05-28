@@ -5,24 +5,24 @@ import java.util.Map;
 
 public class Producto {
 
+	//Declaramos as variables
 	double identificadorScan;
-	
 	String nome;
-	
 	String categoria;
-	
 	String descripcion;
-	
 	String urlImaxe;
-	
 	String marca;
 	
 	//FIXME pensar como se hace
+	// Prezo por supermercado
 	List<Map<String, Producto>> prezoPorSupermercado;
-	
 	List<String> tags;
 
+	//Métodos empregados nesta clase
 	
+	/**
+	 * Conxunto de getters e setters da clase
+	 */
 	
 	public double getIdentificadorScan() {
 		return identificadorScan;

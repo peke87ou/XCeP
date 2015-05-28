@@ -4,21 +4,38 @@ import java.util.List;
 
 public class Lista {
 
+	//Declaramos as variables
 	String nome;
-	
 	double idSupermercado;
 	//FIXME CopyOnWriteArrayList
 	List<Producto> productos;
 	
+	
+	//Métodos empregados nesta clase
 	/**
-	 * Agrega un producto a la lista
-	 * @param producto Producto que se agrega a la lista
+	 * Engade un producto a lista
+	 * @param producto: Producto que se engade a lista
 	 */
 	public void engadirProducto(Producto producto){
-		
+		//TODO
 		
 	}
 
+	/**
+	 * Quita un producto da lista
+	 * @param producto: Producto que se quita da lista
+	 */
+	public void quitarProducto(Producto producto){
+		//TODO
+		
+	}
+	
+	
+	/**
+	 * Conxunto de getters e setters da clase
+	 *
+	 */
+	
 	public String getNome() {
 		return nome;
 	}

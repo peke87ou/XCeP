@@ -9,7 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class Welcome extends Activity {
+public class HomeActivity extends Activity {
 	
 	// Declare Variable
 	Button logout;
@@ -18,7 +18,7 @@ public class Welcome extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// Get the view from singleitemview.xml
-		setContentView(R.layout.welcome);
+		setContentView(R.layout.home);
 		
 		// Retrieve current user from Parse.com
 		ParseUser currentUser = ParseUser.getCurrentUser();
@@ -44,5 +44,6 @@ public class Welcome extends Activity {
 				finish();
 			}
 		});
+
 	}
 }
