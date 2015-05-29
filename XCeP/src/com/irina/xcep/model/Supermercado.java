@@ -2,43 +2,50 @@ package com.irina.xcep.model;
 
 import java.util.List;
 import com.parse.ParseClassName;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 
 @ParseClassName("Market")
 public class Supermercado extends ParseObject{
 	
-	String nome;
-	String urlLogo;
-	List<Producto> productos;
+//	String nome;
+//	String urlLogo;
+//	List<Producto> productos;
 
+	public Supermercado() {
+		
+	}
 
 	public String getNome() {
-		return nome;
+		return getString("name");
 	}
 
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		put("name", nome);
+		//this.nome = nome;
 	}
 
 
-	public String getUrlLogo() {
-		return urlLogo;
+	public ParseFile getUrlLogo() {
+		return getParseFile("Image");
 	}
 
 
-	public void setUrlLogo(String urlLogo) {
-		this.urlLogo = urlLogo;
+	public void setUrlLogo(ParseFile urlLogo) {
+		put("Image", urlLogo);
+		//this.urlLogo = urlLogo;
 	}
 
 
 	public List<Producto> getProductos() {
-		return productos;
+		return getList("Products");
 	}
 
 
 	public void setProductos(List<Producto> productos) {
-		this.productos = productos;
+		put("Products", productos);
+		//this.productos = productos;
 	}
 	
 	//TODO agregar el resto de metodos

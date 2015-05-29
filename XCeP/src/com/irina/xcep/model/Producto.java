@@ -2,21 +2,29 @@ package com.irina.xcep.model;
 
 import java.util.List;
 import java.util.Map;
+import com.parse.ParseClassName;
+import com.parse.ParseObject;
 
-public class Producto {
+@ParseClassName("Product")
+public class Producto extends ParseObject {
 
 	//Declaramos as variables
-	double identificadorScan;
-	String nome;
-	String categoria;
-	String descripcion;
-	String urlImaxe;
-	String marca;
-	
+//	double identificadorScan;
+//	String nome;
+//	String categoria;
+//	String descripcion;
+//	String urlImaxe;
+//	String marca;
 	//FIXME pensar como se hace
 	// Prezo por supermercado
-	List<Map<String, Producto>> prezoPorSupermercado;
-	List<String> tags;
+//	List<Map<String, Producto>> prezoPorSupermercado;
+//	List<String> tags;
+	
+	public Producto() {
+		
+	}
+	
+
 
 	//Métodos empregados nesta clase
 	
@@ -24,69 +32,76 @@ public class Producto {
 	 * Conxunto de getters e setters da clase
 	 */
 	
-	public double getIdentificadorScan() {
-		return identificadorScan;
+	public Number getIdentificadorScan() {
+		return getNumber("idBarCode");
 	}
 
-	public void setIdentificadorScan(double identificadorScan) {
-		this.identificadorScan = identificadorScan;
+	public void setIdentificadorScan(Number identificadorScan) {
+		put("idBarCode", identificadorScan);
+		//this.identificadorScan = identificadorScan;
 	}
 
 	public String getNome() {
-		return nome;
+		return getString("title");
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		put("title", nome);
 	}
 
 	public String getCategoria() {
-		return categoria;
+		return getString("categoria");
 	}
 
 	public void setCategoria(String categoria) {
-		this.categoria = categoria;
+		put("categoria", categoria);
+		//this.categoria = categoria;
 	}
 
 	public String getDescripcion() {
-		return descripcion;
+		return getString("description");
 	}
 
 	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+		put("description", descripcion);
+		//this.descripcion = descripcion;
 	}
 
 	public String getUrlImaxe() {
-		return urlImaxe;
+		return getString("icon");
 	}
 
 	public void setUrlImaxe(String urlImaxe) {
-		this.urlImaxe = urlImaxe;
+		put("icon", urlImaxe);
+		//this.urlImaxe = urlImaxe;
 	}
 
 	public String getMarca() {
-		return marca;
+		return getString("mark");
 	}
 
 	public void setMarca(String marca) {
-		this.marca = marca;
+		put("mark", marca);
+		//this.marca = marca;
 	}
 
 	public List<Map<String, Producto>> getPrezoPorSupermercado() {
-		return prezoPorSupermercado;
+		return getList("PrizeMarket");
+		//return prezoPorSupermercado;
 	}
 
-	public void setPrezoPorSupermercado(
-			List<Map<String, Producto>> prezoPorSupermercado) {
-		this.prezoPorSupermercado = prezoPorSupermercado;
+	public void setPrezoPorSupermercado(List<Map<String, Producto>> prezoPorSupermercado) {
+		put("PrizeMarket", prezoPorSupermercado);
+		//this.prezoPorSupermercado = prezoPorSupermercado;
 	}
 
 	public List<String> getTags() {
-		return tags;
+		return getList("tags");
 	}
 
 	public void setTags(List<String> tags) {
-		this.tags = tags;
+		put("tags", tags);
+		//this.tags = tags;
 	}
 	
 	

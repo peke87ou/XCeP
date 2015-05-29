@@ -1,13 +1,24 @@
 package com.irina.xcep;
 
-import com.parse.ParseUser;
+import java.util.List;
+
+import org.w3c.dom.Comment;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.irina.xcep.model.Lista;
+import com.irina.xcep.model.Supermercado;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 public class HomeActivity extends Activity {
 	
@@ -44,6 +55,25 @@ public class HomeActivity extends Activity {
 				finish();
 			}
 		});
+		
+		//Supermercado market =  new Supermercado();
+		//market.setNome("Mercadona");
+		ParseQuery<Lista> query = ParseQuery.getQuery(Lista.class);
+		query.findInBackground(new FindCallback<Lista>() {
+			
+			@Override
+			public void done(List<Lista> objects, ParseException e) {
+				// TODO Auto-generated method stub
+				//market.getNome();
+				TextView txtsupermarket = (TextView) findViewById(R.id.txtsupermarket);
+				txtsupermarket.setText(objects.get(0).getNome());
+				Log.i("Lista", objects.get(0).getIdSupermercado().toString());
+				Log.i("Lista", objects.get(0).getProductos()+"");
+//				Log.i("Supermercado", objects.get(0).getUrlLogo().+"");
+			}
+		});
+		
+				
 
 	}
 }

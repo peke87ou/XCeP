@@ -1,15 +1,23 @@
 package com.irina.xcep.model;
 
 import java.util.List;
+import com.parse.ParseClassName;
+import com.parse.ParseObject;
+import com.parse.ParseRelation;
 
-public class Lista {
+@ParseClassName("List")
+public class Lista extends ParseObject {
 
-	//Declaramos as variables
-	String nome;
-	double idSupermercado;
-	//FIXME CopyOnWriteArrayList
-	List<Producto> productos;
+//	//Declaramos as variables
+//	String nome;
+//	double idSupermercado;
+//	//FIXME CopyOnWriteArrayList
+//	List<Producto> productos;
 	
+	public Lista() {
+		
+	}
+
 	
 	//Métodos empregados nesta clase
 	/**
@@ -37,27 +45,29 @@ public class Lista {
 	 */
 	
 	public String getNome() {
-		return nome;
+		return getString("name");
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		put("name", nome);
 	}
 
-	public double getIdSupermercado() {
-		return idSupermercado;
+	public ParseRelation<ParseObject> getIdSupermercado() {
+		return getRelation("idMarket");
 	}
 
 	public void setIdSupermercado(double idSupermercado) {
-		this.idSupermercado = idSupermercado;
+		put("idMarket", idSupermercado);
+		//this.idSupermercado = idSupermercado;
 	}
 
 	public List<Producto> getProductos() {
-		return productos;
+		return getList("Products");
 	}
 
 	public void setProductos(List<Producto> productos) {
-		this.productos = productos;
+		put("Products", productos);
+		//this.productos = productos;
 	}
 	
 	
