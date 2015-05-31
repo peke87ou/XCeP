@@ -37,21 +37,23 @@
         android:layout_below="@+id/txtpassword"
         android:inputType="textPassword" />
 
-    <Button
+    <com.gc.materialdesign.views.ButtonRectangle
         android:id="@+id/login"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/password"
+        android:background="#58CB93"
         android:layout_marginTop="20dp"
-        android:text="@string/LoginBtn" />
+        android:text="@string/LoginBtn" 
+        materialdesign:animate="true"/>
 
     <com.gc.materialdesign.views.ButtonRectangle
         android:id="@+id/signup"
         android:layout_width="fill_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/login"
         android:text="@string/SignupBtn" 
-        android:background="#1E88E5"
+        android:background="#58CB93"
         materialdesign:animate="true"/>
 
 </RelativeLayout>

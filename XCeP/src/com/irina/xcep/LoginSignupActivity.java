@@ -17,7 +17,7 @@ import com.parse.SignUpCallback;
 
 public class LoginSignupActivity extends Activity {
 	//Declaramos as variables
-	Button loginbutton;
+	ButtonRectangle loginbutton;
 	ButtonRectangle signup;
 	String usernametxt;
 	String passwordtxt;
@@ -35,7 +35,7 @@ public class LoginSignupActivity extends Activity {
 		password = (EditText) findViewById(R.id.password);
 
 		// Locate Buttons in main.xml
-		loginbutton = (Button) findViewById(R.id.login);
+		loginbutton = (ButtonRectangle) findViewById(R.id.login);
 		signup = (ButtonRectangle) findViewById(R.id.signup);
 
 		// Login Button Click Listener
