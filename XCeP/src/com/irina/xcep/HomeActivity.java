@@ -67,7 +67,7 @@ public class HomeActivity extends Activity {
 				//market.getNome();
 				TextView txtsupermarket = (TextView) findViewById(R.id.txtsupermarket);
 				txtsupermarket.setText(objects.get(0).getNome());
-				Log.i("Lista", objects.get(0).getIdSupermercado().toString());
+				Log.i("Lista", objects.get(0).getIdSupermercado()+"");
 				Log.i("Lista", objects.get(0).getProductos()+"");
 //				Log.i("Supermercado", objects.get(0).getUrlLogo().+"");
 			}
