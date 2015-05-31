@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.gc.materialdesign.views.ButtonRectangle;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -17,7 +18,7 @@ import com.parse.SignUpCallback;
 public class LoginSignupActivity extends Activity {
 	//Declaramos as variables
 	Button loginbutton;
-	Button signup;
+	ButtonRectangle signup;
 	String usernametxt;
 	String passwordtxt;
 	EditText password;
@@ -28,13 +29,14 @@ public class LoginSignupActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		// Get the view from main.xml
 		setContentView(R.layout.loginsignup);
+
 		// Locate EditTexts in main.xml
 		username = (EditText) findViewById(R.id.username);
 		password = (EditText) findViewById(R.id.password);
 
 		// Locate Buttons in main.xml
 		loginbutton = (Button) findViewById(R.id.login);
-		signup = (Button) findViewById(R.id.signup);
+		signup = (ButtonRectangle) findViewById(R.id.signup);
 
 		// Login Button Click Listener
 		loginbutton.setOnClickListener(new OnClickListener() {
