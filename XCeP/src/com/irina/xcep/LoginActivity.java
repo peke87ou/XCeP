@@ -15,7 +15,7 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
-public class LoginSignupActivity extends Activity {
+public class LoginActivity extends Activity {
 	//Declaramos as variables
 	ButtonRectangle loginbutton;
 	ButtonRectangle signup;
@@ -53,7 +53,7 @@ public class LoginSignupActivity extends Activity {
 								if (user != null) {
 									// If user exist and authenticated, send user to Welcome.class
 									Intent intent = new Intent(
-											LoginSignupActivity.this,
+											LoginActivity.this,
 											HomeActivity.class);
 									startActivity(intent);
 									Toast.makeText(getApplicationContext(),
@@ -72,8 +72,9 @@ public class LoginSignupActivity extends Activity {
 		});
 		// Sign up Button Click Listener
 		signup.setOnClickListener(new OnClickListener() {
-
+			
 			public void onClick(View arg0) {
+
 				// Retrieve the text entered from the EditText
 				usernametxt = username.getText().toString();
 				passwordtxt = password.getText().toString();
