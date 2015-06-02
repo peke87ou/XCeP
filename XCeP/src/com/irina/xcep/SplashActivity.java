@@ -2,61 +2,48 @@ package com.irina.xcep;
 
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-import com.parse.ParseAnonymousUtils;
-import com.parse.ParseUser;
+import com.gc.materialdesign.views.ButtonRectangle;
 
 
-public class SplashActivity extends Activity {
+public class SplashActivity extends Activity implements OnClickListener {
 
+	ButtonRectangle btnSignIn;
+	ButtonRectangle btnSignUp;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       setContentView(R.layout.activity_splash);
-//     // Determine whether the current user is an anonymous user
-//     		if (ParseAnonymousUtils.isLinked(ParseUser.getCurrentUser())) {
-//     			// If user is anonymous, send the user to LoginSignupActivity.class
-//     			Intent intent = new Intent(SplashActivity.this,LoginActivity.class);
-//     			startActivity(intent);
-//     			finish();
-//     		} else {
-//     			// If current user is NOT anonymous user
-//     			// Get current user data from Parse.com
-//     			ParseUser currentUser = ParseUser.getCurrentUser();
-//     			if (currentUser != null) {
-//     				// Send logged in users to Welcome.class
-//     				Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
-//     				startActivity(intent);
-//     				finish();
-//     			} else {
-//     				// Send user to LoginSignupActivity.class
-//     				Intent intent = new Intent(SplashActivity.this,LoginActivity.class);
-//     				startActivity(intent);
-//     				finish();
-//     			}
-//     		}
-//    }
-//
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.splash, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//        return super.onOptionsItemSelected(item);
+        setContentView(R.layout.activity_splash);
+        
+        btnSignIn = (ButtonRectangle) findViewById(R.id.btnSingIn);
+        btnSignUp = (ButtonRectangle) findViewById(R.id.btnSignUp);
+        
+        
+        btnSignIn.setOnClickListener(this);
+        btnSignUp.setOnClickListener(this);
+        
+        
     }
+
+	public void onClick(View v) {
+		Intent i = null;
+		switch(v.getId()){
+			case R.id.btnSingIn:
+				i = new Intent(this,LoginActivity.class);
+				break;
+			case R.id.btnSignUp:
+				i = new Intent(this,SignupActivity.class);
+				break;
+		}
+		startActivity(i);
+		
+	}
+
+	
 }
