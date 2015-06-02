@@ -2,13 +2,14 @@ package com.irina.xcep;
 
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 
 import com.gc.materialdesign.views.ButtonRectangle;
+import com.parse.ParseAnonymousUtils;
+import com.parse.ParseUser;
 
 
 public class SplashActivity extends Activity implements OnClickListener {
@@ -20,15 +21,24 @@ public class SplashActivity extends Activity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        
-        btnSignIn = (ButtonRectangle) findViewById(R.id.btnSingIn);
+
+        //Determine se o usuario actual non é un usuario anónimo
+		if (!ParseAnonymousUtils.isLinked(ParseUser.getCurrentUser())) {
+		// Si el usuario actual no es usuario anónimo
+		// Obter datos de usuario actuais de Parse.com
+		ParseUser currentUser = ParseUser.getCurrentUser();
+			if (currentUser != null) {
+			// Enviar os usuarios rexistrados a HomeActivity.class
+				Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		} 
+		btnSignIn = (ButtonRectangle) findViewById(R.id.btnSingIn);
         btnSignUp = (ButtonRectangle) findViewById(R.id.btnSignUp);
-        
         
         btnSignIn.setOnClickListener(this);
         btnSignUp.setOnClickListener(this);
-        
-        
     }
 
 	public void onClick(View v) {
@@ -42,8 +52,5 @@ public class SplashActivity extends Activity implements OnClickListener {
 				break;
 		}
 		startActivity(i);
-		
 	}
-
-	
 }

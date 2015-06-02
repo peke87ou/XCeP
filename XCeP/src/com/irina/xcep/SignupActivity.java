@@ -1,75 +1,48 @@
 package com.irina.xcep;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.gc.materialdesign.views.ButtonRectangle;
-import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
 public class SignupActivity extends Activity {
 	//Declaramos as variables
-	ButtonRectangle loginbutton;
 	ButtonRectangle signup;
+	EditText username;
+	EditText password;
+	EditText repassword;
+	EditText email;
+	
 	String usernametxt;
 	String passwordtxt;
-	EditText password;
-	EditText username;
-
+	String repasswordtxt;
+	String emailtxt;
+	
 	/** Chamase cando creouse por primera vez a actividad */
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// Get the view from main.xml
-		setContentView(R.layout.loginsignup);
-
+		setContentView(R.layout.signup_form);
+		
+		getActionBar().setTitle(R.string.title_action_bar_signup);
+		
 		// Locate EditTexts in main.xml
-		username = (EditText) findViewById(R.id.username);
-		password = (EditText) findViewById(R.id.password);
+		username = (EditText) findViewById(R.id.signup_username_input);
+		password = (EditText) findViewById(R.id.signup_password_input);
+		repassword = (EditText) findViewById(R.id.signup_confirm_password_input);
+		email = (EditText) findViewById(R.id.signup_email_input);
+		
 
 		// Locate Buttons in main.xml
-		loginbutton = (ButtonRectangle) findViewById(R.id.login);
-		signup = (ButtonRectangle) findViewById(R.id.signup);
+		signup = (ButtonRectangle) findViewById(R.id.create_account);
 
-		// Login Button Click Listener
-		loginbutton.setOnClickListener(new OnClickListener() {
-
-			public void onClick(View arg0) {
-				// Retrieve the text entered from the EditText
-				usernametxt = username.getText().toString();
-				passwordtxt = password.getText().toString();
-
-				// Send data to Parse.com for verification
-				ParseUser.logInInBackground(usernametxt, passwordtxt,
-						new LogInCallback() {
-							public void done(ParseUser user, ParseException e) {
-								if (user != null) {
-									// If user exist and authenticated, send user to Welcome.class
-									Intent intent = new Intent(
-											SignupActivity.this,
-											HomeActivity.class);
-									startActivity(intent);
-									Toast.makeText(getApplicationContext(),
-											"Conectado Exitosamente ",
-											Toast.LENGTH_LONG).show();
-									finish();
-								} else {
-									Toast.makeText(
-											getApplicationContext(),
-											"Este usuario non existe, por favor rexistrese",
-											Toast.LENGTH_LONG).show();
-								}
-							}
-						});
-			}
-		});
 		// Sign up Button Click Listener
 		signup.setOnClickListener(new OnClickListener() {
 			
@@ -78,18 +51,27 @@ public class SignupActivity extends Activity {
 				// Retrieve the text entered from the EditText
 				usernametxt = username.getText().toString();
 				passwordtxt = password.getText().toString();
+				repasswordtxt = repassword.getText().toString();
+				emailtxt = email.getText().toString();
 				
 				// Force user to fill up the form
-				if (usernametxt.equals("") && passwordtxt.equals("")) {
+				if (usernametxt.equals("") || passwordtxt.equals("") || repasswordtxt.equals("") || email.equals("")) {
 					Toast.makeText(getApplicationContext(),
 							"Por favor complete o formulario de inscrición",
 							Toast.LENGTH_LONG).show();
 
-				} else {
+				}else if (!passwordtxt.equals(repasswordtxt)){
+					Toast.makeText(getApplicationContext(),
+							"Las contraseñas no coinciden",
+							Toast.LENGTH_LONG).show();
+				}else {
+					
+				
 					// Save new user data into Parse.com Data Storage
 					ParseUser user = new ParseUser();
 					user.setUsername(usernametxt);
 					user.setPassword(passwordtxt);
+					user.setEmail(emailtxt);
 					user.signUpInBackground(new SignUpCallback() {
 						public void done(ParseException e) {
 							if (e == null) {

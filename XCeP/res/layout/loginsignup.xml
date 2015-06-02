@@ -7,7 +7,7 @@
     android:background="#E0F8F1"
     android:orientation="vertical"
     android:padding="10dip"
-    tools:context="com.androidbegin.parselogintutorial.LoginSignupActivity" >
+    >
 
     <TextView
         android:id="@+id/txtusername"
@@ -50,13 +50,5 @@
         android:text="@string/LoginBtn" 
         materialdesign:animate="true"/>
 
-    <com.gc.materialdesign.views.ButtonRectangle
-        android:id="@+id/signup"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/login"
-        android:text="@string/SignupBtn" 
-        android:background="#088A68"
-        materialdesign:animate="true"/>
-
+    
 </RelativeLayout>

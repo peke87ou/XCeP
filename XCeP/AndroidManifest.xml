@@ -28,12 +28,15 @@
             </intent-filter>
         </activity>
         
-        <activity 
+         <activity 
             android:name=".LoginActivity"
             android:theme="@style/CustomTheme">
         </activity>
         
-        
+          <activity 
+            android:name=".SignupActivity"
+            android:theme="@style/CustomTheme">
+        </activity>
         <activity 
             android:name=".HomeActivity" 
             android:theme="@style/CustomTheme">

@@ -46,7 +46,6 @@
             android:id="@+id/btnSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageLogo"
             android:layout_marginTop="20dp"
             android:background="#088A68"
             android:text="@string/SignupBtn"
@@ -56,7 +55,6 @@
             android:id="@+id/btnSingIn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/btnSignUp"
             android:background="#088A68"
             android:text="@string/LoginBtn"
             materialdesign:animate="true" />

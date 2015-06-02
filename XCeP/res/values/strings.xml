@@ -5,12 +5,15 @@
     <string name="app_name">XCeP</string>
     <string name="Username">Nome</string>
     <string name="Password">Contrasinal</string>
+    <string name="RePassword">Volva introducir o contrasinal</string>
+    <string name="Email">Enderezo electrónico</string>
     <string name="LoginBtn">Iniciar sesión</string>
     <string name="SignupBtn">Rexistrarse</string>
     <string name="LogoutBtn">Desconectarse</string>
     <string name="Welcome">As miñas listas</string>
     <string name="action_settings">Configuracion</string>
-
+	<string name="title_action_bar_login">Logueate</string>
+    <string name="title_action_bar_signup">Rexistrate</string>
     
     <!--  <style name="DefaultButtonText">
 	   <item name="android:layout_width">fill_parent</item>
