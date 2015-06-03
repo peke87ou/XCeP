@@ -1,10 +1,12 @@
 package com.irina.xcep;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gc.materialdesign.views.ButtonRectangle;
@@ -24,6 +26,7 @@ public class SignupActivity extends Activity {
 	String passwordtxt;
 	String repasswordtxt;
 	String emailtxt;
+	TextView linklogin;
 	
 	/** Chamase cando creouse por primera vez a actividad */
 	public void onCreate(Bundle savedInstanceState) {
@@ -42,7 +45,8 @@ public class SignupActivity extends Activity {
 
 		// Locate Buttons in main.xml
 		signup = (ButtonRectangle) findViewById(R.id.create_account);
-
+		linklogin = (TextView) findViewById(R.id.link_login);
+		
 		// Sign up Button Click Listener
 		signup.setOnClickListener(new OnClickListener() {
 			
@@ -88,6 +92,17 @@ public class SignupActivity extends Activity {
 					});
 				}
 
+			}
+		});
+		
+		linklogin.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				//Ir a páxina de rexistro
+				Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+				startActivity(intent);
+				
 			}
 		});
 

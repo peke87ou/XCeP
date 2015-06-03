@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gc.materialdesign.views.ButtonRectangle;
@@ -20,7 +21,8 @@ public class LoginActivity extends Activity {
 	String passwordtxt;
 	EditText password;
 	EditText username;
-
+	TextView linksingup;
+	
 	/** Chamase cando creouse por primera vez a actividad */
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -35,7 +37,7 @@ public class LoginActivity extends Activity {
 
 		// Locate Buttons in main.xml
 		loginbutton = (ButtonRectangle) findViewById(R.id.login);
-		
+		linksingup = (TextView) findViewById(R.id.link_signup);
 
 		// Login Button Click Listener
 		loginbutton.setOnClickListener(new OnClickListener() {
@@ -70,6 +72,16 @@ public class LoginActivity extends Activity {
 			}
 		});
 		
+		linksingup.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				//Ir a páxina de rexistro
+				Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+				startActivity(intent);
+				
+			}
+		});
 
 	}
 }

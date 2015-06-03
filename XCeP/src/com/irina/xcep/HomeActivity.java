@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.gc.materialdesign.views.ButtonRectangle;
 import com.irina.xcep.model.Lista;
 import com.irina.xcep.model.Supermercado;
 import com.parse.FindCallback;
@@ -23,7 +24,7 @@ import com.parse.ParseUser;
 public class HomeActivity extends Activity {
 	
 	// Declare Variable
-	Button logout;
+	ButtonRectangle logout;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,7 @@ public class HomeActivity extends Activity {
 		txtuser.setText("Has iniciado sesión como " + struser);
 		
 		// Locate Button in welcome.xml
-		logout = (Button) findViewById(R.id.logout);
+		logout = (ButtonRectangle) findViewById(R.id.logout);
 
 		// Logout Button Click Listener
 		logout.setOnClickListener(new OnClickListener() {

@@ -50,5 +50,20 @@
         android:text="@string/LoginBtn" 
         materialdesign:animate="true"/>
 
+    <TextView
+        android:id="@+id/link_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/login"
+        android:layout_below="@+id/login"
+        android:layout_marginRight="108dp"
+        android:layout_marginTop="91dp"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="@string/SignupBtn"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/darker_gray"
+        android:textStyle="italic|bold"
+        android:typeface="serif" />
     
 </RelativeLayout>

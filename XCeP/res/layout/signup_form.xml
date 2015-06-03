@@ -46,10 +46,23 @@
     <com.gc.materialdesign.views.ButtonRectangle
         android:id="@+id/create_account"
         android:layout_marginTop="@dimen/com_parse_ui_small_vertical_spacing"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/SignupBtn"
         android:background="#088A68"
         materialdesign:animate="true" />
+
+    <TextView
+        android:id="@+id/link_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="91dp"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="@string/LoginBtn"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/darker_gray"
+        android:textStyle="italic|bold"
+        android:typeface="serif" />
 
 </LinearLayout>
