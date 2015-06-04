@@ -14,6 +14,7 @@
     <string name="action_settings">Configuracion</string>
 	<string name="title_action_bar_login">Logueate</string>
     <string name="title_action_bar_signup">Rexistrate</string>
+    <string name="products"> productos</string>
     
     <!--  <style name="DefaultButtonText">
 	   <item name="android:layout_width">fill_parent</item>
