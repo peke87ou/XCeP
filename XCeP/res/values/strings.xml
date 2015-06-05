@@ -15,6 +15,11 @@
 	<string name="title_action_bar_login">Logueate</string>
     <string name="title_action_bar_signup">Rexistrate</string>
     <string name="products"> productos</string>
+    <string name="hint_name_list">Introduza o nome da lista</string>
+    <string name="button_cancel_new_list">Cancelar</string>
+    <string name="button_add_new_list">Crear</string>
+    <string name="title_action_bar_add_shopping_list">Nova Lista</string>
+    <string name="text_name_add_shopping_list">Nome da lista:</string>
     
     <!--  <style name="DefaultButtonText">
 	   <item name="android:layout_width">fill_parent</item>

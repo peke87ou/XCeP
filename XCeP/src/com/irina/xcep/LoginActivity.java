@@ -27,7 +27,7 @@ public class LoginActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// Get the view from main.xml
-		setContentView(R.layout.loginsignup);
+		setContentView(R.layout.activity_login);
 		
 		getActionBar().setTitle(R.string.title_action_bar_login);
 		

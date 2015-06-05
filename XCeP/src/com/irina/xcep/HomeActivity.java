@@ -38,7 +38,7 @@ public class HomeActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// Get the view from singleitemview.xml
-		setContentView(R.layout.home);
+		setContentView(R.layout.activity_home);
 		
 		// Retrieve current user from Parse.com
 		ParseUser currentUser = ParseUser.getCurrentUser();
@@ -107,14 +107,9 @@ public class HomeActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				//Ir a páxina de rexistro
-//				Intent intent = new Intent(HomeActivity.this, SignupActivity.class);
-//				startActivity(intent);
-				
-				Toast.makeText(
-						getApplicationContext(),
-						"Ventana de añadir listas",
-						Toast.LENGTH_LONG).show();
+				//Ir a páxina engadir unha lista
+				Intent intent = new Intent(HomeActivity.this, AddShoppingListActivity.class);
+				startActivity(intent);
 				
 			}
 		});

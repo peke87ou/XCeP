@@ -32,7 +32,7 @@ public class SignupActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// Get the view from main.xml
-		setContentView(R.layout.signup_form);
+		setContentView(R.layout.activity_signup);
 		
 		getActionBar().setTitle(R.string.title_action_bar_signup);
 		
