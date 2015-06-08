@@ -18,6 +18,7 @@ public class AdapterGridAddShoppingList extends ArrayAdapter<Supermercado>{
    
       public AdapterGridAddShoppingList(Context context, List<Supermercado> lista) {
 		super(context,0, lista);
+		mContext = context;
 	}
 
 	@Override

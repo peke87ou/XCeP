@@ -1,9 +1,11 @@
 package com.irina.xcep;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -12,7 +14,11 @@ import android.widget.Toast;
 
 import com.gc.materialdesign.views.ButtonRectangle;
 import com.irina.xcep.adapters.AdapterGridAddShoppingList;
+import com.irina.xcep.model.Lista;
 import com.irina.xcep.model.Supermercado;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 
 public class AddShoppingListActivity extends Activity{
 	
@@ -20,6 +26,7 @@ public class AddShoppingListActivity extends Activity{
 	ArrayList<Supermercado> supermercados = new ArrayList<Supermercado>();
 	GridView grid;
 	Supermercado market;
+	AdapterGridAddShoppingList adapter;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -38,7 +45,7 @@ public class AddShoppingListActivity extends Activity{
 			}
 		});
 		
-		AdapterGridAddShoppingList adapter = new AdapterGridAddShoppingList(AddShoppingListActivity.this, supermercados);
+		adapter = new AdapterGridAddShoppingList(AddShoppingListActivity.this, supermercados);
 		
 		grid=(GridView)findViewById(R.id.grid_logo_market);
         grid.setAdapter(adapter);
@@ -47,11 +54,24 @@ public class AddShoppingListActivity extends Activity{
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         	
-        	Toast.makeText(AddShoppingListActivity.this, "You Clicked at " + market.getNome(), Toast.LENGTH_SHORT).show();
+        	Toast.makeText(AddShoppingListActivity.this, "You Clicked at " + supermercados.get(position).getNome(), Toast.LENGTH_SHORT).show();
              }
          });
 
-		
+        ParseQuery<Supermercado> query = ParseQuery.getQuery(Supermercado.class);
+		query.findInBackground(new FindCallback<Supermercado>() {
+			
+			@Override
+			public void done(List<Supermercado> objects, ParseException e) {
+				
+
+				supermercados = (ArrayList<Supermercado>) objects;
+				
+				adapter.clear();
+				adapter.addAll(supermercados);
+				
+			}
+		});
 	}
 
 
