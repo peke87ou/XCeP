@@ -23,24 +23,24 @@ public class AdapterGridAddShoppingList extends ArrayAdapter<Supermercado>{
 		super(context, resource, textViewResourceId, objects);
 	}
 
-	@Override
-      public View getView(int position, View convertView, ViewGroup parent) {
-          View grid;
-          LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-          
-          if (convertView == null) {
-
-              grid = new View(mContext);
-              grid = inflater.inflate(R.layout.grid_add_shopping_list, null);
-              TextView textView = (TextView) grid.findViewById(R.id.title_market_add_list);
-              ImageView imageView = (ImageView)grid.findViewById(R.id.image_market_add_list);
-              textView.setText(objects);
-              imageView.setImageResource(Imageid[position]);
-          } else {
-              grid = (View) convertView;
-          }
-
-          return grid;
-      }
+//	@Override
+//      public View getView(int position, View convertView, ViewGroup parent) {
+//          View grid;
+//       //   LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//          
+//          if (convertView == null) {
+//
+////              grid = new View(mContext);
+////              grid = inflater.inflate(R.layout.grid_add_shopping_list, null);
+////              TextView textView = (TextView) grid.findViewById(R.id.title_market_add_list);
+//              ImageView imageView = (ImageView)grid.findViewById(R.id.image_market_add_list);
+////              textView.setText(objects);
+////              imageView.setImageResource(Imageid[position]);
+//          } else {
+//              grid = (View) convertView;
+//          }
+//
+////          return grid;
+//      }
 
 }
