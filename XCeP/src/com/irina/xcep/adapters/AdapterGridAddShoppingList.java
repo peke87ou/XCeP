@@ -26,7 +26,7 @@ public class AdapterGridAddShoppingList extends ArrayAdapter<Supermercado>{
 	@Override
       public View getView(int position, View convertView, ViewGroup parent) {
           View grid;
-          LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+          LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
           
           if (convertView == null) {
 
@@ -34,7 +34,7 @@ public class AdapterGridAddShoppingList extends ArrayAdapter<Supermercado>{
               grid = inflater.inflate(R.layout.grid_add_shopping_list, null);
               TextView textView = (TextView) grid.findViewById(R.id.title_market_add_list);
               ImageView imageView = (ImageView)grid.findViewById(R.id.image_market_add_list);
-              textView.setText(supermercado);
+              textView.setText(objects);
               imageView.setImageResource(Imageid[position]);
           } else {
               grid = (View) convertView;
