@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +28,7 @@ public class AddShoppingListActivity extends Activity{
 	GridView grid;
 	Supermercado market;
 	AdapterGridAddShoppingList adapter;
+	boolean click_item = false;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,26 @@ public class AddShoppingListActivity extends Activity{
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         	
+              
+//        	// Esta parte la uso para poder quitar el fondo cambiado a la fila seleccionada anteriormente
+//        	if(grid != null){
+//        		if(!grid.equals(view)){
+////        			view.getBackground();
+////        	        grid.setBackgroundDrawable(view.getBackground());
+//        	      
+//        	        Log.i("1", "por aki");
+//        	    }                            
+//        	 }   
+        	if(!click_item){
+	        	// Aqui cambio el fondo de la fila seleccionada actualmente
+	        	view.setBackgroundColor(Color.argb(200,208,245,169));  
+	        	click_item = true;
+	        	Log.i("2", parent.getItemAtPosition(position).toString());
+        	}else{
+        		view.setBackgroundColor(Color.TRANSPARENT); 
+        		click_item = false;
+        	}
+        	//   grid = view;
         	Toast.makeText(AddShoppingListActivity.this, "You Clicked at " + supermercados.get(position).getNome(), Toast.LENGTH_SHORT).show();
              }
          });

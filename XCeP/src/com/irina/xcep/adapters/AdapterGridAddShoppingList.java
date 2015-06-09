@@ -3,6 +3,9 @@ package com.irina.xcep.adapters;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +15,8 @@ import android.widget.TextView;
 
 import com.irina.xcep.R;
 import com.irina.xcep.model.Supermercado;
+import com.parse.ParseException;
+import com.parse.ParseFile;
 
 public class AdapterGridAddShoppingList extends ArrayAdapter<Supermercado>{
 	 Context mContext;
@@ -34,12 +39,20 @@ public class AdapterGridAddShoppingList extends ArrayAdapter<Supermercado>{
               TextView textView = (TextView) grid.findViewById(R.id.title_market_add_list);
               ImageView imageView = (ImageView)grid.findViewById(R.id.image_market_add_list);
               textView.setText(market.getNome());
-              //Imageid[position]
-//              imageView.setImageDrawable(market.getUrlLogo());
-          } else {
-              grid = (View) convertView;
-          }
 
+              ParseFile fileObject = market.getUrlLogo(); 
+              Bitmap bmp = null;
+			  try {
+				  bmp = BitmapFactory.decodeByteArray(fileObject.getData(), 0, fileObject.getData().length);
+			  } catch (ParseException e) {
+					e.printStackTrace();
+			  }
+	          
+			  imageView.setImageBitmap(bmp);
+          
+          } else {
+        	  grid = (View) convertView;
+	      }
           return grid;
       }
 
