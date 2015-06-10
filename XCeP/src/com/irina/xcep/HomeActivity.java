@@ -73,6 +73,7 @@ public class HomeActivity extends Activity {
 		//market.setNome("Mercadona");
 		
 		ParseQuery<Lista> query = ParseQuery.getQuery(Lista.class);
+		query.include("Market");
 		query.findInBackground(new FindCallback<Lista>() {
 			
 			@Override
@@ -82,21 +83,12 @@ public class HomeActivity extends Activity {
 				misListas = (ArrayList<Lista>) objects;
 				
 				adapter.clear();
-				adapter.addAll(misListas);
-				//adapter.setNotifyOnChange(true); Forzar a que se vuelva dibujar la lista asociada a este adapter
-				
-				//market.getNome();
-				/*for (int i =0; i < objects.size(); i++){
-					LinearLayout lista = (LinearLayout) getLayoutInflater().inflate(R.layout.item_shopping_list, null);
-					((TextView) lista.findViewById(R.id.name_list)).setText(objects.get(0).getNome());
-					// ((ViewGroup) list.getParent()).addView(lista);
-					list.addView(lista);
-				}*/
-				//TextView txtsupermarket = (TextView) findViewById(R.id.txtsupermarket);
-				//txtsupermarket.setText();
-				Log.i("Lista", objects.get(0).getIdSupermercado()+"");
-				Log.i("Lista", objects.get(0).getProductos()+"");
-//				Log.i("Supermercado", objects.get(0).getUrlLogo().+"");
+
+				if(misListas != null){
+					adapter.addAll(misListas);
+				}else{
+					Toast.makeText(HomeActivity.this, "Listas vacía", Toast.LENGTH_LONG).show();
+				}
 			}
 		});
 		
