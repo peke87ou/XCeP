@@ -10,24 +10,24 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.Suppress;
 import android.widget.EditText;
 
-public class LoginTest extends ActivityInstrumentationTestCase2<LoginActivity> {
+public class HomeTest extends ActivityInstrumentationTestCase2<HomeActivity> {
 	
 	private Solo solo;
-	private LoginActivity login;
+	private HomeActivity home;
 	static int TIME_OUT_LOGIN = 30000;
 
-	public LoginTest(Class<LoginActivity> activityClass) {
+	public HomeTest(Class<HomeActivity> activityClass) {
 		super(activityClass);
 	}
 
-	public LoginTest() {
-		this(LoginActivity.class);
+	public HomeTest() {
+		this(HomeActivity.class);
 	}
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
 		solo= new Solo(getInstrumentation(), getActivity());
-		login = (LoginActivity) solo.getCurrentActivity();
+		home = (HomeActivity) solo.getCurrentActivity();
 	}
 	
 	@Override
@@ -36,10 +36,10 @@ public class LoginTest extends ActivityInstrumentationTestCase2<LoginActivity> {
     }
 	
 	
-	public void testLogin() {
-		final EditText username  = (EditText) login.findViewById(R.id.username);
-		final EditText password  = (EditText) login.findViewById(R.id.password);
-		final ButtonRectangle buttonlogin = (ButtonRectangle) login.findViewById(R.id.login);
+	public void testDesconectar() {
+		final EditText username  = (EditText) home.findViewById(R.id.username);
+		final EditText password  = (EditText) home.findViewById(R.id.password);
+		final ButtonRectangle buttonlogin = (ButtonRectangle) home.findViewById(R.id.login);
 		solo.enterText(username, "irina");
 		solo.enterText(password, "irina");
 		solo.clickOnView(buttonlogin);
@@ -49,9 +49,9 @@ public class LoginTest extends ActivityInstrumentationTestCase2<LoginActivity> {
 	
 	
 	public void testLoginFailed() {
-		final EditText username  = (EditText) login.findViewById(R.id.username);
-		final EditText password  = (EditText) login.findViewById(R.id.password);
-		final ButtonRectangle buttonlogin = (ButtonRectangle) login.findViewById(R.id.login);
+		final EditText username  = (EditText) home.findViewById(R.id.username);
+		final EditText password  = (EditText) home.findViewById(R.id.password);
+		final ButtonRectangle buttonlogin = (ButtonRectangle) home.findViewById(R.id.login);
 		solo.enterText(username, "irina");
 		solo.enterText(password, "passmal");
 		solo.clickOnView(buttonlogin);
