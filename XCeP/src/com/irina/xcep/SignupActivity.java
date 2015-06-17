@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gc.materialdesign.views.ButtonRectangle;
+import com.irina.xcep.utils.Utils;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -51,20 +52,28 @@ public class SignupActivity extends Activity {
 		signup.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View arg0) {
-
+				
+				boolean allfilled = true;
 				// Retrieve the text entered from the EditText
 				usernametxt = username.getText().toString();
 				passwordtxt = password.getText().toString();
 				repasswordtxt = repassword.getText().toString();
 				emailtxt = email.getText().toString();
 				
-				// Force user to fill up the form
-				if (usernametxt.equals("") || passwordtxt.equals("") || repasswordtxt.equals("") || email.equals("")) {
-					Toast.makeText(getApplicationContext(),
-							"Por favor complete o formulario de inscrición",
-							Toast.LENGTH_LONG).show();
+				allfilled =  Utils.isNotEmpty(username, usernametxt);
+				allfilled =  Utils.isNotEmpty(password, passwordtxt) && allfilled;
+				allfilled =  Utils.isNotEmpty(repassword, repasswordtxt) && allfilled;
+				allfilled =  Utils.isNotEmpty(email,emailtxt) && allfilled;
+				if(!allfilled) return;
+				
+//				// Force user to fill up the form
+//				if (usernametxt.equals("") || passwordtxt.equals("") || repasswordtxt.equals("") || email.equals("")) {
+//					Toast.makeText(getApplicationContext(),
+//							"Por favor complete o formulario de inscrición",
+//							Toast.LENGTH_LONG).show();
 
-				}else if (!passwordtxt.equals(repasswordtxt)){
+//				}else 
+				if (!passwordtxt.equals(repasswordtxt)){
 					Toast.makeText(getApplicationContext(),
 							"Las contraseñas no coinciden",
 							Toast.LENGTH_LONG).show();
@@ -80,12 +89,30 @@ public class SignupActivity extends Activity {
 						public void done(ParseException e) {
 							if (e == null) {
 								// Show a simple Toast message upon successful registration
+								Intent intent = new Intent(
+										SignupActivity.this,
+										HomeActivity.class);
+								startActivity(intent);
 								Toast.makeText(getApplicationContext(),
-										"Con éxito rexistrado, por favor conectarse .",
+										"Rexistrado Exitosamente ",
 										Toast.LENGTH_LONG).show();
+								finish();
 							} else {
-								Toast.makeText(getApplicationContext(),
-										"Error no rexistro", Toast.LENGTH_LONG)
+								String mensaje = "";
+								switch (e.getCode()){
+								case 125:
+									mensaje = "O seu enderezo electrónico é inválido";
+									break;
+								case 202:
+									mensaje = "O usuario que intenta rexistrar xa existe, Loguese!";
+									break;
+								default:
+									mensaje = "Error no rexistro";
+									break;
+									
+								}
+								Toast.makeText(getApplicationContext(), mensaje
+										, Toast.LENGTH_LONG)
 										.show();
 							}
 						}

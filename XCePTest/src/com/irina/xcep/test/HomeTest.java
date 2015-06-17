@@ -1,14 +1,13 @@
 package com.irina.xcep.test;
 
-import com.gc.materialdesign.views.ButtonRectangle;
-import com.irina.xcep.HomeActivity;
-import com.irina.xcep.R;
-import com.irina.xcep.LoginActivity;
-import com.robotium.solo.Solo;
-
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.Suppress;
 import android.widget.EditText;
+
+import com.gc.materialdesign.views.ButtonRectangle;
+import com.irina.xcep.HomeActivity;
+import com.irina.xcep.R;
+import com.robotium.solo.Solo;
 
 public class HomeTest extends ActivityInstrumentationTestCase2<HomeActivity> {
 	
@@ -35,7 +34,7 @@ public class HomeTest extends ActivityInstrumentationTestCase2<HomeActivity> {
         solo.finishOpenedActivities();
     }
 	
-	
+	@Suppress
 	public void testDesconectar() {
 		final EditText username  = (EditText) home.findViewById(R.id.username);
 		final EditText password  = (EditText) home.findViewById(R.id.password);
@@ -48,13 +47,5 @@ public class HomeTest extends ActivityInstrumentationTestCase2<HomeActivity> {
 	}
 	
 	
-	public void testLoginFailed() {
-		final EditText username  = (EditText) home.findViewById(R.id.username);
-		final EditText password  = (EditText) home.findViewById(R.id.password);
-		final ButtonRectangle buttonlogin = (ButtonRectangle) home.findViewById(R.id.login);
-		solo.enterText(username, "irina");
-		solo.enterText(password, "passmal");
-		solo.clickOnView(buttonlogin);
-		solo.searchText("Este usuario non existe, por favor rexistrese");
-	}
+	
 }

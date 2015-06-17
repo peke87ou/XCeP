@@ -1,7 +1,6 @@
 package com.irina.xcep.test;
 
 import android.test.ActivityInstrumentationTestCase2;
-import android.test.suitebuilder.annotation.Suppress;
 
 import com.gc.materialdesign.views.ButtonRectangle;
 import com.irina.xcep.LoginActivity;
