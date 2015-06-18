@@ -2,6 +2,7 @@ package com.irina.xcep.test;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.EditText;
 
 import com.gc.materialdesign.views.ButtonRectangle;
@@ -119,6 +120,14 @@ public class SignUpTest extends ActivityInstrumentationTestCase2<SignupActivity>
 		solo.enterText(repassword, helper.getRePassSign());
 		solo.enterText(email, helper.getEmailSign());
 		solo.clickOnView(buttonsign);
+		
+		//Utilizado para esperar por el retardo de las vistas en mostrar el error al estar vacias
+		try {
+			Thread.sleep(2500);
+		} catch (InterruptedException e) {
+			Log.e(SignUpTest.class.getName(),"Interrupted Exception");
+		}
+		
 		assertEquals(true, !TextUtils.isEmpty(username.getError().toString()) && username.getError().toString().equalsIgnoreCase("É necesario encher o campo seleccionado"));
 		assertEquals(true, !TextUtils.isEmpty(password.getError().toString()) && password.getError().toString().equalsIgnoreCase("É necesario encher o campo seleccionado"));
 		assertEquals(true, !TextUtils.isEmpty(repassword.getError().toString()) && repassword.getError().toString().equalsIgnoreCase("É necesario encher o campo seleccionado"));
