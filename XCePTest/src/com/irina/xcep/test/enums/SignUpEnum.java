@@ -8,7 +8,7 @@ public enum SignUpEnum {
 						System.currentTimeMillis()+"",
 						"prueba",
 						"prueba",
-						"prueba@gmail.com"
+						System.currentTimeMillis()+"@gmail.com"
 					),
 		INCORRECTO_EXISTE_USER	(
 						"irina",
@@ -22,6 +22,12 @@ public enum SignUpEnum {
 						"prueba",
 						"k@l.c"
 			),
+		INCORRECTO_MAIL_EXISTE	(
+					"pruebaMail",
+					"prueba",
+					"prueba",
+					"prueba@gmail.com"
+		),
 		INCORRECTO_PASS	(
 						"prueba",
 						"mail",

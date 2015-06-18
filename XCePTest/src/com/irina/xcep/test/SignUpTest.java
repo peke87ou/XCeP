@@ -86,6 +86,18 @@ public class SignUpTest extends ActivityInstrumentationTestCase2<SignupActivity>
 		solo.searchText("O seu enderezo electrónico é inválido");
 	}
 	
+	public void testSingupFailedMailExiste() {
+		
+		helper.setSignData(SignUpEnum.INCORRECTO_MAIL_EXISTE);
+	
+		solo.enterText(username, helper.getUserSign());
+		solo.enterText(password, helper.getPassSing());
+		solo.enterText(repassword, helper.getRePassSign());
+		solo.enterText(email, helper.getEmailSign());
+		solo.clickOnView(buttonsign);
+		solo.searchText("O email que intenta rexistrar xa existe");
+	}
+	
 	public void testSingupFailedPass() {
 		
 		helper.setSignData(SignUpEnum.INCORRECTO_PASS);
@@ -107,7 +119,7 @@ public class SignUpTest extends ActivityInstrumentationTestCase2<SignupActivity>
 		solo.enterText(repassword, helper.getRePassSign());
 		solo.enterText(email, helper.getEmailSign());
 		solo.clickOnView(buttonsign);
-		assertEquals(true, TextUtils.isEmpty(username.getError().toString()) && username.getError().toString().equalsIgnoreCase("É necesario encher o campo seleccionado"));
+		assertEquals(true, !TextUtils.isEmpty(username.getError().toString()) && username.getError().toString().equalsIgnoreCase("É necesario encher o campo seleccionado"));
 		assertEquals(true, !TextUtils.isEmpty(password.getError().toString()) && password.getError().toString().equalsIgnoreCase("É necesario encher o campo seleccionado"));
 		assertEquals(true, !TextUtils.isEmpty(repassword.getError().toString()) && repassword.getError().toString().equalsIgnoreCase("É necesario encher o campo seleccionado"));
 		assertEquals(true, !TextUtils.isEmpty(email.getError().toString()) && email.getError().toString().equalsIgnoreCase("É necesario encher o campo seleccionado"));

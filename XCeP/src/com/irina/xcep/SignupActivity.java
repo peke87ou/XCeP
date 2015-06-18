@@ -106,6 +106,9 @@ public class SignupActivity extends Activity {
 								case 202:
 									mensaje = "O usuario que intenta rexistrar xa existe, Loguese!";
 									break;
+								case 203:
+									mensaje = "O email que intenta rexistrar xa existe";
+									break;
 								default:
 									mensaje = "Error no rexistro";
 									break;
