@@ -6,7 +6,7 @@ import com.parse.ParseClassName;
 import com.parse.ParseObject;
 
 @ParseClassName("Product")
-public class Producto extends ParseObject {
+public class Produto extends ParseObject {
 
 	//Declaramos as variables
 //	double identificadorScan;
@@ -20,7 +20,7 @@ public class Producto extends ParseObject {
 //	List<Map<String, Producto>> prezoPorSupermercado;
 //	List<String> tags;
 	
-	public Producto() {
+	public Produto() {
 		
 	}
 	
@@ -85,12 +85,12 @@ public class Producto extends ParseObject {
 		//this.marca = marca;
 	}
 
-	public List<Map<String, Producto>> getPrezoPorSupermercado() {
+	public List<Map<String, Produto>> getPrezoPorSupermercado() {
 		return getList("PrizeMarket");
 		//return prezoPorSupermercado;
 	}
 
-	public void setPrezoPorSupermercado(List<Map<String, Producto>> prezoPorSupermercado) {
+	public void setPrezoPorSupermercado(List<Map<String, Produto>> prezoPorSupermercado) {
 		put("PrizeMarket", prezoPorSupermercado);
 		//this.prezoPorSupermercado = prezoPorSupermercado;
 	}

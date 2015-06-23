@@ -28,7 +28,7 @@ public class SplashActivity extends Activity implements OnClickListener {
 		// Obter datos de usuario actuais de Parse.com
 		ParseUser currentUser = ParseUser.getCurrentUser();
 			if (currentUser != null) {
-			// Enviar os usuarios rexistrados a HomeActivity.class
+			// Enviar os usuarios logueado a HomeActivity.class
 				Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
 				startActivity(intent);
 				finish();

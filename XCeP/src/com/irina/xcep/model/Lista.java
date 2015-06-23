@@ -24,7 +24,7 @@ public class Lista extends ParseObject {
 	 * Engade un producto a lista
 	 * @param producto: Producto que se engade a lista
 	 */
-	public void engadirProducto(Producto producto){
+	public void engadirProducto(Produto producto){
 		//TODO
 		
 	}
@@ -33,7 +33,7 @@ public class Lista extends ParseObject {
 	 * Quita un producto da lista
 	 * @param producto: Producto que se quita da lista
 	 */
-	public void quitarProducto(Producto producto){
+	public void quitarProducto(Produto producto){
 		//TODO
 		
 	}
@@ -61,11 +61,11 @@ public class Lista extends ParseObject {
 		//this.idSupermercado = idSupermercado;
 	}
 
-	public List<Producto> getProductos() {
+	public List<Produto> getProductos() {
 		return getList("Products");
 	}
 
-	public void setProductos(List<Producto> productos) {
+	public void setProductos(List<Produto> productos) {
 		put("Products", productos);
 		//this.productos = productos;
 	}

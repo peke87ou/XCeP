@@ -38,12 +38,12 @@ public class Supermercado extends ParseObject{
 	}
 
 
-	public List<Producto> getProductos() {
+	public List<Produto> getProductos() {
 		return getList("Products");
 	}
 
 
-	public void setProductos(List<Producto> productos) {
+	public void setProductos(List<Produto> productos) {
 		put("Products", productos);
 		//this.productos = productos;
 	}
@@ -54,7 +54,7 @@ public class Supermercado extends ParseObject{
 	 * @param tags Lista de tags
 	 * @return Devuelve una lista de producto que tienen este tag
 	 */
-	public List<Producto> getProductosPorTag(List<String> tags){
+	public List<Produto> getProductosPorTag(List<String> tags){
 		
 		return null;
 	}

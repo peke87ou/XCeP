@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gc.materialdesign.views.ButtonRectangle;
+import com.irina.xcep.utils.Utils;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -43,9 +44,16 @@ public class LoginActivity extends Activity {
 		loginbutton.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View arg0) {
+				
+				boolean allfilled = true;
+				
 				// Retrieve the text entered from the EditText
 				usernametxt = username.getText().toString();
 				passwordtxt = password.getText().toString();
+				
+				allfilled =  Utils.isNotEmpty(username, usernametxt);
+				allfilled =  Utils.isNotEmpty(password, passwordtxt) && allfilled;
+				if(!allfilled) return;
 
 				// Send data to Parse.com for verification
 				ParseUser.logInInBackground(usernametxt, passwordtxt,
