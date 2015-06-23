@@ -26,10 +26,10 @@ public class AllTests extends ActivityInstrumentationTestCase2<Activity> {
 	
     public static Test suite() {
         TestSuite suite = new TestSuite(AllTests.class.getName());
-        suite.addTestSuite(SplashTest.class);
+//        suite.addTestSuite(SplashTest.class);
         suite.addTestSuite(SignUpTest.class);
-        suite.addTestSuite(LoginTest.class);
-        suite.addTestSuite(HomeTest.class);
+//        suite.addTestSuite(LoginTest.class);
+//        suite.addTestSuite(HomeTest.class);
         return suite;
     }
 }

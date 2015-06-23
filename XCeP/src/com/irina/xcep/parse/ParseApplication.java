@@ -15,16 +15,15 @@ public class ParseApplication extends Application {
         super.onCreate();
  
         // Engadir o teu codigo de inicialización 
-        Parse.initialize(this, "wtEK7WzQx7cytFc1ogtpNxH5aPqDhipqlZQkFaPX", 		//YOUR_APPLICATION_ID
-        		"WC1Xbw9HsZv17VyW0VXRjTC4To9PsGRDUKiwU4Mq");					//YOUR_CLIENT_KEY
+        Parse.initialize(this,  "wtEK7WzQx7cytFc1ogtpNxH5aPqDhipqlZQkFaPX", 		//YOUR_APPLICATION_ID
+        						"WC1Xbw9HsZv17VyW0VXRjTC4To9PsGRDUKiwU4Mq");					//YOUR_CLIENT_KEY
         
         ParseObject.registerSubclass(Supermercado.class);
         ParseObject.registerSubclass(Lista.class);
-        //ParseObject.registerSubclass(Producto.class);
+        //ParseObject.registerSubclass(Produto.class);
         
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
- 
      
         defaultACL.setPublicReadAccess(true);
  

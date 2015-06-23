@@ -32,15 +32,15 @@ public class AdapterListas extends ArrayAdapter<Lista> {
     @Override
     public View getView(int position, View celdaView, ViewGroup parent) {
        
-    	// Get the data item for this position
+       //Recuperar o elemento de datos para esta posición
        Lista lista = getItem(position);    
        
-       // Check if an existing view is being reused, otherwise inflate the view
+       // Comproba se unha vista existente está a ser reutilizado , se non inflar a vista
        if (celdaView == null) {
           celdaView = LayoutInflater.from(getContext()).inflate(R.layout.item_shopping_list, parent, false);
        }
        
-       // Lookup view for data population
+       //Buscar Vista para recheo de datos
        ((TextView) celdaView.findViewById(R.id.name_list)).setText(lista.getNome());
 
        final ImageView imageView = (ImageView)celdaView.findViewById(R.id.imageMarketList);
@@ -53,7 +53,7 @@ public class AdapterListas extends ArrayAdapter<Lista> {
     	           for (ParseObject object : list) {
 
     	              Supermercado superRelacionado = ((Supermercado)object);
-    	              System.out.println("Supermercado encontrado " + superRelacionado.getNome());
+    	              System.out.println(R.string.text_adapter_list_market + superRelacionado.getNome());
     	              
     	              ParseFile fileObject = superRelacionado.getUrlLogo(); 
     	              Bitmap bmp = null;

@@ -3,13 +3,9 @@ package com.irina.xcep.model;
 public class Usuario {
 
 	String email;
-	
 	String contrasinal;
-	
 	boolean admin;
 	
-	
-
 	public String getEmail() {
 		return email;
 	}
@@ -33,7 +29,5 @@ public class Usuario {
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
-	
-	
 	
 }

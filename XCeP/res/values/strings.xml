@@ -20,7 +20,22 @@
     <string name="button_add_new_list">Crear</string>
     <string name="title_action_bar_add_shopping_list">Nova Lista</string>
     <string name="text_name_add_shopping_list">Nome da lista:</string>
+    <string name="text_adapter_list_market">Supermercado encontrado</string>
+    <string name="text_login_home_user">Has iniciado sesión como  </string>
+    <string name="empty_list">Listas vacía</string>
+    <string name="conect_Ok">Conectado Exitosamente </string>
+    <string name="conect_ko_login"> Este usuario non existe, por favor rexistrese</string>
+    <string name="pass_no_ok"> Las contraseñas no coinciden</string>
+    <string name="conect_ko_signup"> Rexistrado Exitosamente </string>
+    <string name="email_fail"> O seu enderezo electrónico é inválido</string>
+    <string name="user_fail"> O usuario que intenta rexistrar xa existe, Loguese!</string>
+    <string name="email_exist"> O email que intenta rexistrar xa existe</string>
+    <string name="error_signup"> Error no rexistro</string>
     
+    
+    
+    
+     
     <!--  <style name="DefaultButtonText">
 	   <item name="android:layout_width">fill_parent</item>
 	    <item name="android:layout_height">wrap_content</item>

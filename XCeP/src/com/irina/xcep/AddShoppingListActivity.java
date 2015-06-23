@@ -22,7 +22,7 @@ import com.parse.ParseQuery;
 
 public class AddShoppingListActivity extends Activity{
 	
-	ButtonRectangle btncancel;
+	ButtonRectangle btncancel, btnacept;
 	ArrayList<Supermercado> supermercados = new ArrayList<Supermercado>();
 	GridView grid;
 	Supermercado market;
@@ -32,7 +32,7 @@ public class AddShoppingListActivity extends Activity{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// Get the view from singleitemview.xml
+		
 		setContentView(R.layout.activity_add_shopping_list);
 		getActionBar().setTitle(R.string.title_action_bar_add_shopping_list);
 		
@@ -46,6 +46,16 @@ public class AddShoppingListActivity extends Activity{
 			}
 		});
 		
+		btnacept = (ButtonRectangle) findViewById(R.id.crear_new_list);
+		btnacept.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				//Engadimos a nova lista a BD
+				
+			}
+		});
+		
 		adapter = new AdapterGridAddShoppingList(AddShoppingListActivity.this, supermercados);
 		
 		grid=(GridView)findViewById(R.id.grid_logo_market);
@@ -54,7 +64,6 @@ public class AddShoppingListActivity extends Activity{
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        	
               
 //        	// Esta parte la uso para poder quitar el fondo cambiado a la fila seleccionada anteriormente
 //        	if(grid != null){
@@ -66,7 +75,7 @@ public class AddShoppingListActivity extends Activity{
 //        	    }                            
 //        	 }   
         	if(!click_item){
-	        	// Aqui cambio el fondo de la fila seleccionada actualmente
+	        	// Aqui cambio o fondo da fila seleccionada actualmente
 	        	view.setBackgroundColor(Color.argb(200,208,245,169));  
 	        	click_item = true;
 	        	Log.i("2", parent.getItemAtPosition(position).toString());

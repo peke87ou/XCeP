@@ -8,9 +8,7 @@ import com.parse.ParseRelation;
 @ParseClassName("List")
 public class Lista extends ParseObject {
 
-//	//Declaramos as variables
-//	String nome;
-//	double idSupermercado;
+
 //	//FIXME CopyOnWriteArrayList
 //	List<Producto> productos;
 	
@@ -18,7 +16,6 @@ public class Lista extends ParseObject {
 		
 	}
 
-	
 	//Métodos empregados nesta clase
 	/**
 	 * Engade un producto a lista
@@ -71,6 +68,4 @@ public class Lista extends ParseObject {
 	}
 	
 	
-	
-	//TODO agregar el resto de metodos.
 }

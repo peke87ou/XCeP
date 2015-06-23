@@ -24,7 +24,7 @@ import com.parse.ParseUser;
 
 public class HomeActivity extends Activity {
 	
-	// Declare Variable
+	// Declaración de variables
 	ButtonRectangle logout;
 	ListView list;
 	List<ParseObject> ob;
@@ -32,70 +32,51 @@ public class HomeActivity extends Activity {
 	ArrayList<Lista> misListas = new ArrayList<Lista>();
 	ImageButton addlist;
 	
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// Get the view from singleitemview.xml
 		setContentView(R.layout.activity_home);
 		
-		// Retrieve current user from Parse.com
+		// Solicitar usuario actual do Parse.com
 		ParseUser currentUser = ParseUser.getCurrentUser();
 		
-		// Convert currentUser into String
+		// Convertir currentUser en String
 		String struser = currentUser.getUsername().toString();
-		
-		// Locate TextView in welcome.xml
 		TextView txtuser = (TextView) findViewById(R.id.txtuser);
-
-		// Set the currentUser String into TextView
-		txtuser.setText("Has iniciado sesión como " + struser);
+		txtuser.setText(R.string.text_login_home_user + struser);
 		
-		// Locate Button in welcome.xml
 		logout = (ButtonRectangle) findViewById(R.id.logout);
-
-		// Logout Button Click Listener
 		logout.setOnClickListener(new OnClickListener() {
-
 			public void onClick(View arg0) {
-				// Logout current user
+				// Desconectar o current user
 				ParseUser.logOut();
 				finish();
 			}
 		});
 		
 		list = (ListView) findViewById(R.id.lista_list);
-		adapter = new AdapterListas(HomeActivity.this, misListas);//ArrayAdapter<Lista>(HomeActivity.this,R.layout.item_shopping_list);
+		adapter = new AdapterListas(HomeActivity.this, misListas);
 		list.setAdapter(adapter);
-		
-		//Supermercado market =  new Supermercado();
-		//market.setNome("Mercadona");
 		
 		ParseQuery<Lista> query = ParseQuery.getQuery(Lista.class);
 		query.include("Market");
 		query.findInBackground(new FindCallback<Lista>() {
-			
 			@Override
 			public void done(List<Lista> objects, ParseException e) {
-				
-
+	
 				misListas = (ArrayList<Lista>) objects;
-				
 				adapter.clear();
-
+	
 				if(misListas != null){
 					adapter.addAll(misListas);
 				}else{
-					Toast.makeText(HomeActivity.this, "Listas vacía", Toast.LENGTH_LONG).show();
+					Toast.makeText(HomeActivity.this, R.string.empty_list, Toast.LENGTH_LONG).show();
 				}
 			}
 		});
 		
-		
 		addlist = (ImageButton) findViewById(R.id.add_list);
-		
 		addlist.setOnClickListener(new OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 				//Ir a páxina engadir unha lista
@@ -104,9 +85,5 @@ public class HomeActivity extends Activity {
 				
 			}
 		});
-
-		
-		
-	
 	}
 }

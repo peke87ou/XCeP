@@ -8,24 +8,16 @@ import com.parse.ParseObject;
 @ParseClassName("Product")
 public class Produto extends ParseObject {
 
-	//Declaramos as variables
-//	double identificadorScan;
-//	String nome;
-//	String categoria;
-//	String descripcion;
-//	String urlImaxe;
-//	String marca;
+	
 	//FIXME pensar como se hace
 	// Prezo por supermercado
-//	List<Map<String, Producto>> prezoPorSupermercado;
-//	List<String> tags;
+	//	List<Map<String, Producto>> prezoPorSupermercado;
+	//	List<String> tags;
 	
 	public Produto() {
 		
 	}
 	
-
-
 	//Métodos empregados nesta clase
 	
 	/**
@@ -38,7 +30,6 @@ public class Produto extends ParseObject {
 
 	public void setIdentificadorScan(Number identificadorScan) {
 		put("idBarCode", identificadorScan);
-		//this.identificadorScan = identificadorScan;
 	}
 
 	public String getNome() {
@@ -55,7 +46,6 @@ public class Produto extends ParseObject {
 
 	public void setCategoria(String categoria) {
 		put("categoria", categoria);
-		//this.categoria = categoria;
 	}
 
 	public String getDescripcion() {
@@ -64,7 +54,6 @@ public class Produto extends ParseObject {
 
 	public void setDescripcion(String descripcion) {
 		put("description", descripcion);
-		//this.descripcion = descripcion;
 	}
 
 	public String getUrlImaxe() {
@@ -73,7 +62,6 @@ public class Produto extends ParseObject {
 
 	public void setUrlImaxe(String urlImaxe) {
 		put("icon", urlImaxe);
-		//this.urlImaxe = urlImaxe;
 	}
 
 	public String getMarca() {
@@ -82,17 +70,14 @@ public class Produto extends ParseObject {
 
 	public void setMarca(String marca) {
 		put("mark", marca);
-		//this.marca = marca;
 	}
 
 	public List<Map<String, Produto>> getPrezoPorSupermercado() {
 		return getList("PrizeMarket");
-		//return prezoPorSupermercado;
 	}
 
 	public void setPrezoPorSupermercado(List<Map<String, Produto>> prezoPorSupermercado) {
 		put("PrizeMarket", prezoPorSupermercado);
-		//this.prezoPorSupermercado = prezoPorSupermercado;
 	}
 
 	public List<String> getTags() {
@@ -101,7 +86,6 @@ public class Produto extends ParseObject {
 
 	public void setTags(List<String> tags) {
 		put("tags", tags);
-		//this.tags = tags;
 	}
 	
 	
