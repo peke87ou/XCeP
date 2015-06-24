@@ -17,7 +17,7 @@ public enum SignUpEnum {
 						"irina@gmail.com"
 					),
 		INCORRECTO_MAIL	(
-						"prueba",
+						"pruebaMailIn",
 						"prueba",
 						"prueba",
 						"k@l.c"
@@ -29,7 +29,7 @@ public enum SignUpEnum {
 					"prueba@gmail.com"
 		),
 		INCORRECTO_PASS	(
-						"prueba",
+						"pruebaPass",
 						"mail",
 						"mailmal",
 						"prueba@gmail.com"

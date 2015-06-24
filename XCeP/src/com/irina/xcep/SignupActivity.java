@@ -61,7 +61,7 @@ public class SignupActivity extends Activity {
 					Toast.makeText(getApplicationContext(),	R.string.pass_no_ok,	Toast.LENGTH_LONG).show();
 				}else {
 					// Gardar novos datos do usuario en Parse.com Almacenamento de Datos
-					ParseUser user = new ParseUser();
+					final ParseUser user = new ParseUser();
 					user.setUsername(usernametxt);
 					user.setPassword(passwordtxt);
 					user.setEmail(emailtxt);
@@ -90,6 +90,7 @@ public class SignupActivity extends Activity {
 									break;
 								}
 								Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_LONG).show();
+								ParseUser.logOut();
 							}
 						}
 					});
