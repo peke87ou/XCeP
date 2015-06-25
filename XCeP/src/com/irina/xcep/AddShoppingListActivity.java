@@ -10,15 +10,20 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
 
 import com.gc.materialdesign.views.ButtonRectangle;
 import com.irina.xcep.adapters.AdapterGridAddShoppingList;
+import com.irina.xcep.model.Lista;
 import com.irina.xcep.model.Supermercado;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 public class AddShoppingListActivity extends Activity{
 	
@@ -28,6 +33,8 @@ public class AddShoppingListActivity extends Activity{
 	Supermercado market;
 	AdapterGridAddShoppingList adapter;
 	boolean click_item = false;
+	private EditText nameList;
+	private String nameListtxt;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -53,6 +60,7 @@ public class AddShoppingListActivity extends Activity{
 			public void onClick(View v) {
 				//Engadimos a nova lista a BD
 				
+				engadirLista();
 			}
 		});
 		
@@ -99,6 +107,36 @@ public class AddShoppingListActivity extends Activity{
 				
 				adapter.clear();
 				adapter.addAll(supermercados);
+				
+			}
+		});
+	}
+
+	protected void engadirLista() {
+		nameList = (EditText) findViewById(R.id.text_name_list);
+		
+		nameListtxt = nameList.getText().toString();
+		
+//		ParseObject addlist = new ParseObject("List");
+//
+//		addlist.put("name", nameListtxt);
+		//addlist.put("idMarket","Mecadona");
+		
+//		ParseUser currentUser = ParseUser.getCurrentUser();
+//		String struser = currentUser.getUsername().toString();
+//		addlist.put("idUser", ParseUser.getCurrentUser());
+		
+		
+		final Lista addlist = new Lista();
+		
+		addlist.setNome(nameListtxt);
+		//addlist.setIdSupermercado(idSupermercado);
+		addlist.setIdUser(ParseUser.getCurrentUser());
+		Log.i("USER", ParseUser.getCurrentUser()+"");
+		addlist.saveInBackground(new SaveCallback() {
+			
+			@Override
+			public void done(ParseException arg0) {
 				
 			}
 		});

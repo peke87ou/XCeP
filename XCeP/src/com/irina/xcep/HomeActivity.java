@@ -43,7 +43,7 @@ public class HomeActivity extends Activity {
 		// Convertir currentUser en String
 		String struser = currentUser.getUsername().toString();
 		TextView txtuser = (TextView) findViewById(R.id.txtuser);
-		txtuser.setText(R.string.text_login_home_user + struser);
+		txtuser.setText(this.getString(R.string.text_login_home_user )+ " "  + struser);
 		
 		logout = (ButtonRectangle) findViewById(R.id.logout);
 		logout.setOnClickListener(new OnClickListener() {
@@ -86,4 +86,61 @@ public class HomeActivity extends Activity {
 			}
 		});
 	}
+	
+	/* private AbsListView.OnScrollListener mScrollListener = new AbsListView.OnScrollListener() {
+
+	        private int mLastFirstVisibleItem;
+	        private boolean mAnimationCalled = false;
+			private AdapterView<ListAdapter> mListView;
+			private boolean mListStateFlying;
+			private  Object mAddQuoteBtn;
+
+	        @Override
+	        public void onScrollStateChanged(AbsListView view, int scrollState) {
+	            //If we are flying
+	            boolean mListStateFlying = AbsListView.OnScrollListener.SCROLL_STATE_FLING == scrollState;
+	            mAnimationCalled = mListStateFlying ? mAnimationCalled : false;
+	            Log.i("ABDLISTVIEW", "State changed, new state: " + scrollState);
+
+	        }
+
+	        @Override
+	        public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
+	           
+				if (mAddQuoteBtn == null) return;
+
+
+	            if (!mAnimationCalled && mLastFirstVisibleItem < firstVisibleItem) {
+	                //Scrolling down
+	                ((ButtonFloat) mAddQuoteBtn).hide();
+	                mAnimationCalled = true;
+	            } else if (!mAnimationCalled && mLastFirstVisibleItem > firstVisibleItem) {
+	                //Scrolling up
+	                ((Toast) mAddQuoteBtn).show();
+	                mAnimationCalled = true;
+	            }
+	            mLastFirstVisibleItem = firstVisibleItem;
+
+
+
+	            if(mListStateFlying || mListView.getCount() == 0) return;
+
+	            boolean greater = false;
+
+	            if(firstVisibleItem == 0 && mListPage != 0){
+	                //TODO :  We are up scrolling and we aren't in the first page
+	                mListPage = (mListPage<= totalItemCount) ? 0 : mListPage - totalItemCount;
+	            }else if(visibleItemCount + firstVisibleItem == totalItemCount){
+	                //TODO : We need to check if we have more items in our database, in that case we need to retrieve then
+	                // and change the cursor
+	                greater = true;
+	                mListPage += totalItemCount;
+	                queryLocalData(greater);
+	            }
+
+
+
+	        }
+	    };*/
 }

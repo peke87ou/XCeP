@@ -4,6 +4,7 @@ import java.util.List;
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 import com.parse.ParseRelation;
+import com.parse.ParseUser;
 
 @ParseClassName("List")
 public class Lista extends ParseObject {
@@ -55,17 +56,25 @@ public class Lista extends ParseObject {
 
 	public void setIdSupermercado(double idSupermercado) {
 		put("idMarket", idSupermercado);
-		//this.idSupermercado = idSupermercado;
+	}
+	
+	
+	public ParseRelation<ParseUser> getIdUser() {
+		return ParseUser.getCurrentUser().getRelation("idUser");
 	}
 
-	public List<Produto> getProductos() {
-		return getList("Products");
+	public void setIdUser( ParseUser idUser) {
+		put("idUser", idUser.toString());
 	}
 
-	public void setProductos(List<Produto> productos) {
-		put("Products", productos);
-		//this.productos = productos;
+	public ParseRelation<ParseObject> getIdProducts() {
+		return getRelation("idProducts");
 	}
+
+	public void setIdProducts(double idProducts) {
+		put("idProducts", idProducts);
+	}
+
 	
 	
 }
