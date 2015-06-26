@@ -31,20 +31,21 @@ public class HomeActivity extends Activity {
 	AdapterListas adapter;
 	ArrayList<Lista> misListas = new ArrayList<Lista>();
 	ImageButton addlist;
+	// Solicitar usuario actual do Parse.com
+	ParseUser currentUser = ParseUser.getCurrentUser();
+	
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
 		
-		// Solicitar usuario actual do Parse.com
-		ParseUser currentUser = ParseUser.getCurrentUser();
-		
 		// Convertir currentUser en String
 		String struser = currentUser.getUsername().toString();
 		TextView txtuser = (TextView) findViewById(R.id.txtuser);
 		txtuser.setText(this.getString(R.string.text_login_home_user )+ " "  + struser);
 		
+		//Botón desconectarse da app
 		logout = (ButtonRectangle) findViewById(R.id.logout);
 		logout.setOnClickListener(new OnClickListener() {
 			public void onClick(View arg0) {
@@ -54,27 +55,7 @@ public class HomeActivity extends Activity {
 			}
 		});
 		
-		list = (ListView) findViewById(R.id.lista_list);
-		adapter = new AdapterListas(HomeActivity.this, misListas);
-		list.setAdapter(adapter);
-		
-		ParseQuery<Lista> query = ParseQuery.getQuery(Lista.class);
-		query.include("Market");
-		query.findInBackground(new FindCallback<Lista>() {
-			@Override
-			public void done(List<Lista> objects, ParseException e) {
-	
-				misListas = (ArrayList<Lista>) objects;
-				adapter.clear();
-	
-				if(misListas != null){
-					adapter.addAll(misListas);
-				}else{
-					Toast.makeText(HomeActivity.this, R.string.empty_list, Toast.LENGTH_LONG).show();
-				}
-			}
-		});
-		
+		//Botón engadir nova lista
 		addlist = (ImageButton) findViewById(R.id.add_list);
 		addlist.setOnClickListener(new OnClickListener() {
 			@Override
@@ -85,6 +66,41 @@ public class HomeActivity extends Activity {
 				
 			}
 		});
+		
+		//Listas da compra
+		listBuy();
+		
+	}
+	public void listBuy() {
+		//Recreamos a lista
+		list = (ListView) findViewById(R.id.lista_list);
+		adapter = new AdapterListas(HomeActivity.this, misListas);
+		list.setAdapter(adapter);
+				
+		ParseQuery<Lista> query = ParseQuery.getQuery(Lista.class);
+		query.include("Market");
+		//Filtramos as lista para cada usuario logueado na app
+		query.include("User");
+		query.whereEqualTo("idUser", currentUser);
+		//query.include("Products");
+		query.findInBackground(new FindCallback<Lista>() {
+			@Override
+			public void done(List<Lista> objects, ParseException e) {
+				misListas = (ArrayList<Lista>) objects;
+				adapter.clear();
+				if(misListas != null){
+					adapter.addAll(misListas);
+				}else{
+					Toast.makeText(HomeActivity.this, R.string.empty_list, Toast.LENGTH_LONG).show();
+				}
+			}
+		});
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		listBuy();
 	}
 	
 	/* private AbsListView.OnScrollListener mScrollListener = new AbsListView.OnScrollListener() {

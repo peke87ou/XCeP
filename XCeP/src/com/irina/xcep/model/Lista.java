@@ -1,6 +1,5 @@
 package com.irina.xcep.model;
 
-import java.util.List;
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 import com.parse.ParseRelation;
@@ -50,21 +49,28 @@ public class Lista extends ParseObject {
 		put("name", nome);
 	}
 
-	public ParseRelation<ParseObject> getIdSupermercado() {
+	public ParseRelation<Supermercado> getIdSupermercado() {
 		return getRelation("idMarket");
 	}
 
-	public void setIdSupermercado(double idSupermercado) {
-		put("idMarket", idSupermercado);
+	public void setIdSupermercado(Supermercado idSupermercado) {
+		getIdSupermercado().add(idSupermercado);
+		saveInBackground();
+		//put("idMarket", idSupermercado);
 	}
 	
 	
 	public ParseRelation<ParseUser> getIdUser() {
-		return ParseUser.getCurrentUser().getRelation("idUser");
+		return getRelation("idUser");
 	}
 
+	public ParseRelation<Usuario> getUserApp() {
+		return getRelation("idUser");
+	}
+	
 	public void setIdUser( ParseUser idUser) {
-		put("idUser", idUser.toString());
+		getIdUser().add(idUser);
+		saveInBackground();
 	}
 
 	public ParseRelation<ParseObject> getIdProducts() {

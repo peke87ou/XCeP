@@ -1,33 +1,50 @@
 package com.irina.xcep.model;
 
-public class Usuario {
+import com.parse.ParseClassName;
+import com.parse.ParseObject;
 
-	String email;
-	String contrasinal;
-	boolean admin;
-	
+@ParseClassName("User")
+public class Usuario extends ParseObject {
+
+	public Usuario() {
+		
+	}
+	public String getObjectId() {
+		return getString("objectId");
+	}
+
+	public void setObjectId(String objectId) {
+		put("objectId", objectId);
+	}
+	public String getUserName() {
+		return getString("username");
+	}
+
+	public void setUserName(String username) {
+		put("username", username);
+	}
 	public String getEmail() {
-		return email;
+		return getString("email");
 	}
 
 	public void setEmail(String email) {
-		this.email = email;
+		put("email", email);
 	}
 
 	public String getContrasinal() {
-		return contrasinal;
+		return getString("password");
 	}
 
-	public void setContrasinal(String contrasinal) {
-		this.contrasinal = contrasinal;
+	public void setContrasinal(String password) {
+		put("password", password);
 	}
 
 	public boolean isAdmin() {
-		return admin;
+		return getBoolean("eAdmin");
 	}
 
-	public void setAdmin(boolean admin) {
-		this.admin = admin;
+	public void setAdmin(boolean eAdmin) {
+		put("eAdmin", eAdmin);
 	}
 	
 }
