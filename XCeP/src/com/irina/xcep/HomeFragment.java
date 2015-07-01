@@ -3,16 +3,24 @@ package com.irina.xcep;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.gc.materialdesign.views.ButtonFloat;
 import com.gc.materialdesign.views.ButtonRectangle;
 import com.irina.xcep.adapters.AdapterListas;
 import com.irina.xcep.model.Lista;
@@ -22,7 +30,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-public class HomeActivity extends Activity {
+public class HomeFragment extends Fragment {
 	
 	// Declaración de variables
 	ButtonRectangle logout;
@@ -34,47 +42,61 @@ public class HomeActivity extends Activity {
 	// Solicitar usuario actual do Parse.com
 	ParseUser currentUser = ParseUser.getCurrentUser();
 	
+	public static HomeFragment newInstance (int Index){
+		HomeFragment fragment = new HomeFragment();
+		Bundle args = new Bundle();
+		
+		args.putInt("Index", Index);
+		
+		fragment.setArguments(args);
+		
+		return fragment;
+	}
+	
 	
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_home);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		
+		RelativeLayout home = (RelativeLayout) inflater.inflate(R.layout.fragment_home, container, false);
 		
 		// Convertir currentUser en String
 		String struser = currentUser.getUsername().toString();
-		TextView txtuser = (TextView) findViewById(R.id.txtuser);
+		TextView txtuser = (TextView) home.findViewById(R.id.txtuser);
 		txtuser.setText(this.getString(R.string.text_login_home_user )+ " "  + struser);
 		
 		//Botón desconectarse da app
-		logout = (ButtonRectangle) findViewById(R.id.logout);
+		logout = (ButtonRectangle) home.findViewById(R.id.logout);
 		logout.setOnClickListener(new OnClickListener() {
 			public void onClick(View arg0) {
 				// Desconectar o current user
 				ParseUser.logOut();
-				finish();
+				getActivity().finish();
 			}
 		});
 		
 		//Botón engadir nova lista
-		addlist = (ImageButton) findViewById(R.id.add_list);
+		addlist = (ImageButton) home.findViewById(R.id.add_list);
 		addlist.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				//Ir a páxina engadir unha lista
-				Intent intent = new Intent(HomeActivity.this, AddShoppingListActivity.class);
+				Intent intent = new Intent(getActivity(), AddShoppingListActivity.class);
 				startActivity(intent);
 				
 			}
 		});
 		
 		//Listas da compra
-		listBuy();
+		list = (ListView) home.findViewById(R.id.lista_list);
 		
+		
+		return home;
 	}
+	
 	public void listBuy() {
 		//Recreamos a lista
-		list = (ListView) findViewById(R.id.lista_list);
-		adapter = new AdapterListas(HomeActivity.this, misListas);
+		
+		adapter = new AdapterListas(getActivity(), misListas);
 		list.setAdapter(adapter);
 				
 		ParseQuery<Lista> query = ParseQuery.getQuery(Lista.class);
@@ -91,19 +113,21 @@ public class HomeActivity extends Activity {
 				if(misListas != null){
 					adapter.addAll(misListas);
 				}else{
-					Toast.makeText(HomeActivity.this, R.string.empty_list, Toast.LENGTH_LONG).show();
+					Toast.makeText(getActivity(), R.string.empty_list, Toast.LENGTH_LONG).show();
 				}
 			}
 		});
 	}
 	
 	@Override
-	protected void onResume() {
+	public void onResume() {
 		super.onResume();
 		listBuy();
 	}
 	
-	/* private AbsListView.OnScrollListener mScrollListener = new AbsListView.OnScrollListener() {
+	
+	
+	private AbsListView.OnScrollListener mScrollListener = new AbsListView.OnScrollListener() {
 
 	        private int mLastFirstVisibleItem;
 	        private boolean mAnimationCalled = false;
@@ -142,21 +166,8 @@ public class HomeActivity extends Activity {
 
 	            if(mListStateFlying || mListView.getCount() == 0) return;
 
-	            boolean greater = false;
-
-	            if(firstVisibleItem == 0 && mListPage != 0){
-	                //TODO :  We are up scrolling and we aren't in the first page
-	                mListPage = (mListPage<= totalItemCount) ? 0 : mListPage - totalItemCount;
-	            }else if(visibleItemCount + firstVisibleItem == totalItemCount){
-	                //TODO : We need to check if we have more items in our database, in that case we need to retrieve then
-	                // and change the cursor
-	                greater = true;
-	                mListPage += totalItemCount;
-	                queryLocalData(greater);
-	            }
-
-
+	           
 
 	        }
-	    };*/
+	    };
 }

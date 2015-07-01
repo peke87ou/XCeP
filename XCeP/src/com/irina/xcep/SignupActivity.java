@@ -69,7 +69,7 @@ public class SignupActivity extends Activity {
 						public void done(ParseException e) {
 							if (e == null) {
 								// Mostrar unha mensaxe sinxela no momento do rexistro exitoso
-								Intent intent = new Intent(SignupActivity.this,	HomeActivity.class);
+								Intent intent = new Intent(SignupActivity.this,	MainActivity.class);
 								startActivity(intent);
 								Toast.makeText(getApplicationContext(),	R.string.conect_ko_signup,	Toast.LENGTH_LONG).show();
 								finish();

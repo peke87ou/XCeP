@@ -1,72 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
+<android.support.v4.widget.DrawerLayout
+    android:id="@+id/drawer_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/txtwelcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:paddingTop="10dp"
-        android:text="@string/Welcome"
-        android:textSize="25sp" />
+    <!-- Main content view -->
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
-    <TextView
-        android:id="@+id/txtuser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtwelcome"
-        android:layout_centerHorizontal="true" />
-
-    <com.gc.materialdesign.views.ButtonRectangle
-        android:id="@+id/logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="#088A68"
-        android:text="@string/LogoutBtn"
-        materialdesign:animate="true" />
 
     <ListView
-        android:id="@+id/lista_list"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_above="@+id/logout"
-        android:layout_below="@+id/txtuser"
+        android:background="@android:color/white"
+        android:id="@+id/list_drawer"
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
         android:choiceMode="singleChoice"
         android:divider="@android:color/transparent"
-        android:dividerHeight="0dp" >
+        android:dividerHeight="0dp"
+        android:groupIndicator="@null"
+        android:scrollbars="none"/>
 
-    </ListView>
 
-    <ImageButton
-        android:id="@+id/add_list"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="11dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/add" />
-    
-  
-    
-   <!--  <com.gc.materialdesign.views.ButtonFloat
-        android:id="@+id/add_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/add" 
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/green"
-        materialdesign:animate="true"
-        materialdesign:iconDrawable="@android:drawable/ic_input_add" /> -->
-
-</RelativeLayout>
+</android.support.v4.widget.DrawerLayout>

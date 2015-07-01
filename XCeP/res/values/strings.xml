@@ -10,7 +10,7 @@
     <string name="LoginBtn">Iniciar sesión</string>
     <string name="SignupBtn">Rexistrarse</string>
     <string name="LogoutBtn">Desconectarse</string>
-    <string name="Welcome">As miñas listas</string>
+    <string name="my_list">As miñas listas</string>
     <string name="action_settings">Configuracion</string>
 	<string name="title_action_bar_login">Logueate</string>
     <string name="title_action_bar_signup">Rexistrate</string>
@@ -24,17 +24,23 @@
     <string name="text_login_home_user">Has iniciado sesión como  </string>
     <string name="empty_list">Listas vacía</string>
     <string name="conect_Ok">Conectado Exitosamente </string>
-    <string name="conect_ko_login"> Este usuario non existe, por favor rexistrese</string>
-    <string name="pass_no_ok"> Las contraseñas no coinciden</string>
-    <string name="conect_ko_signup"> Rexistrado Exitosamente </string>
-    <string name="email_fail"> O seu enderezo electrónico é inválido</string>
-    <string name="user_fail"> O usuario que intenta rexistrar xa existe, Loguese!</string>
-    <string name="email_exist"> O email que intenta rexistrar xa existe</string>
-    <string name="error_signup"> Error no rexistro</string>
-    
-    
-    
-    
+    <string name="conect_ko_login">Este usuario non existe, por favor rexistrese</string>
+    <string name="pass_no_ok">Las contraseñas no coinciden</string>
+    <string name="conect_ko_signup">Rexistrado Exitosamente </string>
+    <string name="email_fail">O seu enderezo electrónico é inválido</string>
+    <string name="user_fail">O usuario que intenta rexistrar xa existe, Loguese!</string>
+    <string name="email_exist">O email que intenta rexistrar xa existe</string>
+    <string name="error_signup">Error no rexistro</string>
+    <string name="drawer_open">Abrir</string>
+    <string name="drawer_close">Cerrar</string>
+    <string name="catalog">Catálogo</string>
+    <string name="scan">Escaner</string>
+ 	<string name="setting">Ajustes</string>
+ 	<string name="facebook">Facebook</string>
+ 	<string name="twitter">Twitter</string>
+ 	<string name="language">Idioma</string>
+ 	<string name="reset_bd">Reiniciar Datos</string>
+ 	<string name="help">Ayuda</string>
      
     <!--  <style name="DefaultButtonText">
 	   <item name="android:layout_width">fill_parent</item>

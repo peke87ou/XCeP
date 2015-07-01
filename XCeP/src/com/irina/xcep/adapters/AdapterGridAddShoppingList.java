@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import asynctask.AsyncTaskDownloadImage;
 
 import com.irina.xcep.R;
 import com.irina.xcep.model.Supermercado;
@@ -29,7 +30,7 @@ public class AdapterGridAddShoppingList extends ArrayAdapter<Supermercado>{
       public View getView(int position, View convertView, ViewGroup parent) {
           View grid;
           LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-          Supermercado market = getItem(position);  
+          final Supermercado market = getItem(position);  
           
           if (convertView == null) {
 
@@ -39,15 +40,16 @@ public class AdapterGridAddShoppingList extends ArrayAdapter<Supermercado>{
               ImageView imageView = (ImageView)grid.findViewById(R.id.image_market_add_list);
               textView.setText(market.getNome());
 
-              ParseFile fileObject = market.getUrlLogo(); 
-              Bitmap bmp = null;
-			  try {
-				  bmp = BitmapFactory.decodeByteArray(fileObject.getData(), 0, fileObject.getData().length);
-			  } catch (ParseException e) {
-					e.printStackTrace();
-			  }
-	          
-			  imageView.setImageBitmap(bmp);
+              final ParseFile fileObject = market.getUrlLogo(); 
+              new AsyncTaskDownloadImage(imageView).execute(fileObject,market);
+//              Bitmap bmp = null;
+//			  try {
+//				  bmp = BitmapFactory.decodeByteArray(fileObject.getData(), 0, fileObject.getData().length);
+//			  } catch (ParseException e) {
+//					e.printStackTrace();
+//			  }
+//	          
+//			  imageView.setImageBitmap(bmp);
           
           } else {
         	  grid = (View) convertView;

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="48dp"
+    android:layout_margin="8dp" >
+
+    <TextView
+        android:id="@+id/list_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="8dp"
+        android:layout_toLeftOf="@+id/list_image"
+        android:background="@drawable/accent_bottom_border"
+        android:padding="8dp"
+        android:text="This is a test"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:textColor="@color/green"
+        />
+
+    <ImageButton
+        android:id="@+id/list_image"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_launcher" />
+
+</RelativeLayout>

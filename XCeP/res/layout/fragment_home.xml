@@ -43,7 +43,7 @@
 
     </ListView>
 
-    <ImageButton
+   <ImageButton
         android:id="@+id/add_list"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -51,22 +51,21 @@
         android:layout_alignParentTop="true"
         android:layout_marginRight="11dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/add" />
+        android:src="@drawable/add" /> 
     
   
     
-   <!--  <com.gc.materialdesign.views.ButtonFloat
+   <!--   <com.gc.materialdesign.views.ButtonFloat
         android:id="@+id/add_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:scaleType="fitCenter"
         android:src="@drawable/add" 
         android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/green"
         materialdesign:animate="true"
+        android:background="@color/green"
         materialdesign:iconDrawable="@android:drawable/ic_input_add" /> -->
 
 </RelativeLayout>
