@@ -1,15 +1,18 @@
 package asynctask;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.ref.WeakReference;
+import java.net.URL;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.irina.xcep.model.Supermercado;
 import com.parse.ParseException;
-import com.parse.ParseFile;
 
 public class AsyncTaskDownloadImage extends AsyncTask<Object, Void, Bitmap>{
 	
@@ -21,16 +24,17 @@ public class AsyncTaskDownloadImage extends AsyncTask<Object, Void, Bitmap>{
 
 	@Override
 	protected Bitmap doInBackground(Object... params) {
-		ParseFile fileObject = (ParseFile) params[0];
+		String urlBitmap = (String) params[0];
 		Supermercado superRelacionado = (Supermercado) params[1];
 		
 		Bitmap bmp = null;
 		
 		try {
-    		 bmp = BitmapFactory.decodeByteArray(fileObject.getData(), 0, fileObject.getData().length);
+			InputStream input = new URL(urlBitmap).openStream();
+    		 bmp = BitmapFactory.decodeStream(input);
     		 //if(bmp != null) mImagenes.put(superRelacionado.getObjectId(), bmp);
-    	 } catch (ParseException ee) {
-    		 ee.printStackTrace();
+    	 } catch(IOException e){
+    		 Log.e("Error", "Error retrieving input stream");
     	 }
 		
 		return bmp;
@@ -38,11 +42,12 @@ public class AsyncTaskDownloadImage extends AsyncTask<Object, Void, Bitmap>{
 	
 	@Override
 	protected void onPostExecute(Bitmap result) {
-		if(imageViewWeakReference != null && result != null){
-			final ImageView imageView = imageViewWeakReference.get();
-			imageView.setImageBitmap(result);
-		}
 		super.onPostExecute(result);
+		if(imageViewWeakReference != null && result != null){
+				final ImageView imageView = imageViewWeakReference.get();
+				if(imageView != null) imageView.setImageBitmap(result);
+		}
+		
 	}
 	
 }

@@ -38,7 +38,7 @@
             android:theme="@style/CustomTheme">
         </activity>
         <activity 
-            android:name=".MainActivity" 
+            android:name=".MenuActivity" 
             android:theme="@style/CustomTheme">
         </activity>
         <activity 

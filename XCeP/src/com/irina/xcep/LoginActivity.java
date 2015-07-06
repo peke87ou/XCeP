@@ -51,7 +51,7 @@ public class LoginActivity extends Activity {
 						new LogInCallback() {
 							public void done(ParseUser user, ParseException e) {
 								if (user != null) {
-									Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+									Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
 									startActivity(intent);
 									Toast.makeText(getApplicationContext(),	R.string.conect_Ok, Toast.LENGTH_LONG).show();
 									finish();

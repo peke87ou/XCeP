@@ -4,7 +4,6 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.widget.EditText;
 
 import com.gc.materialdesign.views.ButtonRectangle;
-import com.irina.xcep.HomeActivity;
 import com.irina.xcep.LoginActivity;
 import com.irina.xcep.R;
 import com.irina.xcep.test.enums.LoginEnum;

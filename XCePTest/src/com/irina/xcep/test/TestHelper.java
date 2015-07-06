@@ -1,12 +1,11 @@
 package com.irina.xcep.test;
 
-import com.irina.xcep.R;
-import android.app.Activity;
+import android.app.Fragment;
 import android.util.Log;
-import android.widget.Button;
 
 import com.gc.materialdesign.views.ButtonRectangle;
-import com.irina.xcep.HomeActivity;
+import com.irina.xcep.HomeFragment;
+import com.irina.xcep.R;
 import com.irina.xcep.test.enums.LoginEnum;
 import com.irina.xcep.test.enums.SignUpEnum;
 import com.robotium.solo.Solo;
@@ -52,13 +51,17 @@ public class TestHelper {
 	}
 	
 	public void logout() {
-		if(solo.waitForActivity(HomeActivity.class)){
-			solo.assertCurrentActivity("Actividad incorrecta", HomeActivity.class);
-			HomeActivity home = (HomeActivity) solo.getCurrentActivity();
-			final ButtonRectangle buttondesconectar =  (ButtonRectangle) home.findViewById(R.id.logout);
+		
+		Fragment home = solo.getCurrentActivity().getFragmentManager().findFragmentById(R.layout.fragment_home);
+		
+		if(solo.waitForActivity(HomeFragment.class.toString())){
+			solo.assertCurrentActivity("Actividad incorrecta", HomeFragment.class);
+			//Fragment home = solo.getCurrentActivity().getFragmentManager();
+			
+			final ButtonRectangle buttondesconectar =  (ButtonRectangle) home.getView().findViewById(R.id.logout);
 			solo.clickOnView(buttondesconectar);
 			try {
-				Thread.sleep(2500);
+				Thread.sleep(1500);
 			} catch (InterruptedException e) {
 				Log.e(SignUpTest.class.getName(),"Interrupted Exception");
 			}

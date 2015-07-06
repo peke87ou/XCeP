@@ -3,20 +3,17 @@ package com.irina.xcep.adapters;
 import java.util.List;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import asynctask.AsyncTaskDownloadImage;
 
 import com.irina.xcep.R;
 import com.irina.xcep.model.Supermercado;
-import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.squareup.picasso.Picasso;
 
 public class AdapterGridAddShoppingList extends ArrayAdapter<Supermercado>{
 	 Context mContext;
@@ -41,7 +38,9 @@ public class AdapterGridAddShoppingList extends ArrayAdapter<Supermercado>{
               textView.setText(market.getNome());
 
               final ParseFile fileObject = market.getUrlLogo(); 
-              new AsyncTaskDownloadImage(imageView).execute(fileObject,market);
+              String urlBitmap = fileObject.getUrl(); 
+              Picasso.with(getContext()).load(urlBitmap).into(imageView);
+              //new AsyncTaskDownloadImage(imageView).execute(urlBitmap,market);
 //              Bitmap bmp = null;
 //			  try {
 //				  bmp = BitmapFactory.decodeByteArray(fileObject.getData(), 0, fileObject.getData().length);

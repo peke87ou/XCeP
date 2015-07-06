@@ -6,7 +6,6 @@ import android.util.Log;
 import android.widget.EditText;
 
 import com.gc.materialdesign.views.ButtonRectangle;
-import com.irina.xcep.HomeActivity;
 import com.irina.xcep.R;
 import com.irina.xcep.SignupActivity;
 import com.irina.xcep.test.enums.SignUpEnum;

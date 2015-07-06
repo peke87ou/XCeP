@@ -51,7 +51,7 @@ public class SignupActivity extends Activity {
 				repasswordtxt = repassword.getText().toString();
 				emailtxt = email.getText().toString();
 				
-				allfilled =  Utils.isNotEmpty(username, usernametxt);
+				allfilled =  Utils.isNotEmpty(username, usernametxt)&& allfilled;
 				allfilled =  Utils.isNotEmpty(password, passwordtxt) && allfilled;
 				allfilled =  Utils.isNotEmpty(repassword, repasswordtxt) && allfilled;
 				allfilled =  Utils.isNotEmpty(email,emailtxt) && allfilled;
@@ -69,7 +69,7 @@ public class SignupActivity extends Activity {
 						public void done(ParseException e) {
 							if (e == null) {
 								// Mostrar unha mensaxe sinxela no momento do rexistro exitoso
-								Intent intent = new Intent(SignupActivity.this,	MainActivity.class);
+								Intent intent = new Intent(SignupActivity.this,	MenuActivity.class);
 								startActivity(intent);
 								Toast.makeText(getApplicationContext(),	R.string.conect_ko_signup,	Toast.LENGTH_LONG).show();
 								finish();

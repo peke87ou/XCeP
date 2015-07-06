@@ -7,11 +7,10 @@
         android:id="@+id/nav_drawer_title"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/accent_bottom_border"
         android:padding="8dp"
         android:textAllCaps="true"
         android:textSize="12sp"
         android:textStyle="bold"
-        android:textColor="@color/green"/>
+        android:textColor="#01DFD7"/>
 
 </RelativeLayout>

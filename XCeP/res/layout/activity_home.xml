@@ -14,7 +14,7 @@
 
 
     <ListView
-        android:background="@android:color/white"
+        android:background="@color/custom_theme_color"
         android:id="@+id/list_drawer"
         android:layout_width="280dp"
         android:layout_height="match_parent"

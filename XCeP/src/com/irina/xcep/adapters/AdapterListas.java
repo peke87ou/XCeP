@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import asynctask.AsyncTaskDownloadImage;
 
 import com.irina.xcep.R;
 import com.irina.xcep.model.Lista;
@@ -24,13 +23,17 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseRelation;
+import com.squareup.picasso.Picasso;
 
 public class AdapterListas extends ArrayAdapter<Lista> {
 	
 	private static Map<String, Bitmap> mImagenes = new HashMap<String, Bitmap>();
     
+	//private Context contexto;
+	
 	public AdapterListas(Context context, ArrayList<Lista> lista) {
        super(context, 0, lista);
+      // contexto = context;
     }
 
     @Override
@@ -77,8 +80,10 @@ public class AdapterListas extends ArrayAdapter<Lista> {
      	             System.out.println(R.string.text_adapter_list_market + superRelacionado.getNome());
      	              
      	             final ParseFile fileObject = superRelacionado.getUrlLogo();
-     	             
-     	             new AsyncTaskDownloadImage(imageView).execute(fileObject,superRelacionado);
+     	             String urlBitmap = fileObject.getUrl(); 
+     	               
+     	             Picasso.with(getContext()).load(urlBitmap).into(imageView);
+     	             //new AsyncTaskDownloadImage(imageView).execute(urlBitmap,superRelacionado);
      	             
      	           }
      	       } 

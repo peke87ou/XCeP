@@ -29,7 +29,7 @@ public class SplashActivity extends Activity implements OnClickListener {
 		ParseUser currentUser = ParseUser.getCurrentUser();
 			if (currentUser != null && currentUser.isAuthenticated()) {
 			// Enviar os usuarios logueado a HomeActivity.class
-				Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+				Intent intent = new Intent(SplashActivity.this, MenuActivity.class);
 				startActivity(intent);
 				finish();
 			}
