@@ -18,7 +18,7 @@
         android:layout_marginTop="36dp"
         android:gravity="center"
         android:text="@string/app_name"
-        android:textColor="#088A68"
+        android:textColor="@color/verde_oscuro"
         android:textSize="@dimen/text_size_titleApp"
         android:textStyle="italic|bold" />
 
@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:background="#088A68"
+            android:background="@color/verde_oscuro"
             android:text="@string/SignupBtn"
             materialdesign:animate="true" />
 
@@ -55,7 +55,7 @@
             android:id="@+id/btnSingIn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#088A68"
+            android:background="@color/verde_oscuro"
             android:text="@string/LoginBtn"
             materialdesign:animate="true" />
     </LinearLayout>

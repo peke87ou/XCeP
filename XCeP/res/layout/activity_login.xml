@@ -45,7 +45,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/password"
-        android:background="#088A68"
+        android:background="@color/verde_oscuro"
         android:layout_marginTop="20dp"
         android:text="@string/LoginBtn" 
         materialdesign:animate="true"/>

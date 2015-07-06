@@ -32,7 +32,8 @@
         android:padding="20dp"
         android:gravity="center"
         android:layout_weight="0.75"
-        android:numColumns="3" >
+        android:numColumns="3" 
+         android:listSelector="@drawable/grid_selector">
     </GridView>
 
     <LinearLayout
@@ -46,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:background="#088A68"
+            android:background="@color/verde_oscuro"
             android:text="@string/button_cancel_new_list"
             materialdesign:animate="true" />
 
@@ -55,7 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:background="#088A68"
+            android:background="@color/verde_oscuro"
             android:text="@string/button_add_new_list"
             materialdesign:animate="true" />
     </LinearLayout>

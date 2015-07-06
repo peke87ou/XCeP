@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="#088A68"
+        android:background="@color/verde_oscuro"
         android:text="@string/LogoutBtn"
         materialdesign:animate="true" />
 

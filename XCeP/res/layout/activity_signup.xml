@@ -49,7 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/SignupBtn"
-        android:background="#088A68"
+        android:background="@color/verde_oscuro"
         materialdesign:animate="true" />
 
     <TextView
