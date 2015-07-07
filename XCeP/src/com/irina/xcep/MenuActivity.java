@@ -137,7 +137,7 @@ public class MenuActivity extends Activity implements MenuAdapter.SelectedListBu
     private NavDrawerItem[] menu = new NavDrawerItem[]{
             NavTitleItem.create(100, R.string.app_name),
             NavMenuItem.create(101, R.string.my_list, R.drawable.list, true, this),
-            NavMenuItem.create(102, R.string.catalog, R.drawable.notebook, true, this),
+            NavMenuItem.create(102, R.string.catalog, R.drawable.server, true, this),
             NavMenuItem.create(103, R.string.scan, R.drawable.camera, true, this),
             NavTitleItem.create(200, R.string.setting),
             NavMenuItem.create(201, R.string.facebook, R.drawable.facebook, true, this),
