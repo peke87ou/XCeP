@@ -40,7 +40,7 @@ public class MenuActivity extends Activity implements MenuAdapter.SelectedListBu
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_menu);
 
         mTitle = this.mDrawerTitle = getTitle();
 
