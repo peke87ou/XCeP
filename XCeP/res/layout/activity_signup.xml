@@ -10,7 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/ParseLoginUI.EditText"
-        android:hint="@string/Username" />
+        android:hint="@string/Username" 
+        android:digits="0,1,2,3,4,5,6,7,8,9,*,qwertzuiopasdfghjklyxcvbnmñ,_,-" 
+  		/>
 
     <EditText 
         android:id="@+id/signup_password_input"
@@ -21,7 +23,9 @@
         android:fontFamily="sans-serif"
         android:hint="@string/Password"
         android:inputType="textPassword"
-        android:selectAllOnFocus="true" />
+        android:selectAllOnFocus="true" 
+        android:digits="0,1,2,3,4,5,6,7,8,9,*,qwertzuiopasdfghjklyxcvbnmñ,_,-" 
+  		/>
 
     <EditText
         android:id="@+id/signup_confirm_password_input"
@@ -32,7 +36,9 @@
         android:fontFamily="sans-serif"
         android:hint="@string/RePassword"
         android:inputType="textPassword"
-        android:selectAllOnFocus="true" />
+        android:selectAllOnFocus="true" 
+        android:digits="0,1,2,3,4,5,6,7,8,9,*,qwertzuiopasdfghjklyxcvbnmñ,_,-" 
+  		/>
 
     <EditText
         android:id="@+id/signup_email_input"

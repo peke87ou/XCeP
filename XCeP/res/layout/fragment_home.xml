@@ -42,18 +42,6 @@
         android:dividerHeight="0dp" >
 
     </ListView>
-
-   <ImageButton
-        android:id="@+id/add_list"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="11dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/add" /> 
-    
-  
     
    <!--   <com.gc.materialdesign.views.ButtonFloat
         android:id="@+id/add_list"
@@ -67,5 +55,17 @@
         materialdesign:animate="true"
         android:background="@color/green"
         materialdesign:iconDrawable="@android:drawable/ic_input_add" /> -->
+
+   <ImageButton
+       android:id="@+id/add_list"
+       android:layout_width="50dp"
+       android:layout_height="50dp"
+       android:layout_alignParentRight="true"
+       android:layout_alignParentTop="true"
+       android:layout_marginRight="17dp"
+       android:layout_marginTop="12dp"
+       android:background="@android:color/transparent"
+       android:scaleType="fitCenter"
+       android:src="@drawable/add" />
 
 </RelativeLayout>

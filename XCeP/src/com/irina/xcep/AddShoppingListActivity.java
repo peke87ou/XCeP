@@ -68,6 +68,7 @@ public class AddShoppingListActivity extends Activity{
 		
 		grid=(GridView)findViewById(R.id.grid_logo_market);
         grid.setAdapter(adapter);
+        grid.setChoiceMode(GridView.CHOICE_MODE_SINGLE);
         
         ParseQuery<Supermercado> query = ParseQuery.getQuery(Supermercado.class);
 		query.findInBackground(new FindCallback<Supermercado>() {
@@ -87,42 +88,10 @@ public class AddShoppingListActivity extends Activity{
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-              
-        	// Esta parte la uso para poder quitar el fondo cambiado a la fila seleccionada anteriormente
-//        	if(grid != null){
-//        		if(!grid.equals(view)){
-////        			view.getBackground();
-////        	        grid.setBackgroundDrawable(view.getBackground());
-////        			if(!click_item){
-////        	        	// Aqui cambio o fondo da fila seleccionada actualmente
-////        	        	view.setBackgroundColor(Color.argb(200,208,245,169));  
-////        	        	click_item = true;
-////        	        	Log.i("2", parent.getItemAtPosition(position).toString());
-////                	}else{
-////                		view.setBackgroundColor(Color.TRANSPARENT); 
-////                		click_item = false;
-////                	}
-//        	      //  Log.i("1", "por aki");
-//        			grid.setChoiceMode(GridView.CHOICE_MODE_SINGLE);
-//        			 if (grid.getSelectedItem() != null) {
-//        	                view.setBackgroundColor(Color.GREEN);
-//        	            } else {
-//        	                view.setBackgroundColor(Color.BLUE);
-//        	            }
-//        	    }                            
-//        	 } else{
-//        		 grid.setItemChecked(0, true);
-//        		 click_item = true;
-//        		
-//        	 }
-        	grid.setChoiceMode(GridView.CHOICE_MODE_SINGLE);
-        	//view.setBackground(getResources().getDrawable(R.drawable.grid_selector));
         	//Toast.makeText(AddShoppingListActivity.this, "You Clicked at " + supermercados.get(position), Toast.LENGTH_SHORT).show();
         	idSuper = supermercados.get(position);
              }
          });
-
-       
 	}
 
 	protected void engadirLista() {
@@ -136,13 +105,16 @@ public class AddShoppingListActivity extends Activity{
 		
 		boolean allfilled = true;
 		allfilled =  Utils.isNotEmpty(nameList, nameListtxt);
-		if(!allfilled) return;
+		if(!allfilled){
+			idSuper = null;
+			return;
+		}
 		
 		addlist.setNome(nameListtxt);
 		
 		//Id supermercado seleccionado
 		if (idSuper == null ){
-			Toast.makeText(AddShoppingListActivity.this, "No ha seleccionado ningún supermercado", Toast.LENGTH_SHORT).show();
+			Toast.makeText(AddShoppingListActivity.this, "Non seleccionou ningún supermercado", Toast.LENGTH_SHORT).show();
 		}else{
 			addlist.setIdSupermercado(idSuper);
 			//Id usuario logeuado
@@ -151,17 +123,15 @@ public class AddShoppingListActivity extends Activity{
 			addlist.saveInBackground(new SaveCallback() {
 				@Override
 				public void done(ParseException arg0) {
-					Toast.makeText(AddShoppingListActivity.this, "Engadimos a nova lista " + nameListtxt, Toast.LENGTH_SHORT).show();
-					finish();
+					if (arg0 == null){
+						Toast.makeText(AddShoppingListActivity.this, "Engadimos a nova lista " + nameListtxt, Toast.LENGTH_SHORT).show();
+						finish();
+					}else{
+						Toast.makeText(AddShoppingListActivity.this, R.string.error_add_list+" " + nameListtxt, Toast.LENGTH_SHORT).show();
+
+					}
 				}
 			});
-
 		}
-		
-		
 	}
-
-
-	
-
 }

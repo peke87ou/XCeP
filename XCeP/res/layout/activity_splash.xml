@@ -52,7 +52,7 @@
             materialdesign:animate="true" />
 
         <com.gc.materialdesign.views.ButtonRectangle
-            android:id="@+id/btnSingIn"
+            android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/verde_oscuro"

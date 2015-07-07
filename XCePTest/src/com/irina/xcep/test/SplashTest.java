@@ -35,7 +35,7 @@ public class SplashTest extends ActivityInstrumentationTestCase2<SplashActivity>
 	
 	
 	public void testsplashLogin() {
-		final ButtonRectangle buttonlogin = (ButtonRectangle) splash.findViewById(R.id.btnSingIn);
+		final ButtonRectangle buttonlogin = (ButtonRectangle) splash.findViewById(R.id.btnLogin);
 		solo.clickOnView(buttonlogin);
 		solo.assertCurrentActivity("Actividad incorrecta", LoginActivity.class);
 

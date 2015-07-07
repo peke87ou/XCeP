@@ -14,7 +14,7 @@ import com.parse.ParseUser;
 
 public class SplashActivity extends Activity implements OnClickListener {
 
-	ButtonRectangle btnSignIn;
+	ButtonRectangle btnLogin;
 	ButtonRectangle btnSignUp;
 	
     @Override
@@ -34,17 +34,17 @@ public class SplashActivity extends Activity implements OnClickListener {
 				finish();
 			}
 		} 
-		btnSignIn = (ButtonRectangle) findViewById(R.id.btnSingIn);
+		btnLogin = (ButtonRectangle) findViewById(R.id.btnLogin);
         btnSignUp = (ButtonRectangle) findViewById(R.id.btnSignUp);
         
-        btnSignIn.setOnClickListener(this);
+        btnLogin.setOnClickListener(this);
         btnSignUp.setOnClickListener(this);
     }
 
 	public void onClick(View v) {
 		Intent i = null;
 		switch(v.getId()){
-			case R.id.btnSingIn:
+			case R.id.btnLogin:
 				i = new Intent(this,LoginActivity.class);
 				break;
 			case R.id.btnSignUp:

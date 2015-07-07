@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.irina.xcep.adapters.MenuAdapter;
 import com.irina.xcep.adapters.MergeAdapter;
@@ -135,15 +136,15 @@ public class MenuActivity extends Activity implements MenuAdapter.SelectedListBu
     /*Static Navigation Drawer items*/
     private NavDrawerItem[] menu = new NavDrawerItem[]{
             NavTitleItem.create(100, R.string.app_name),
-            NavMenuItem.create(101, R.string.my_list, R.drawable.ic_launcher, true, this),
-            NavMenuItem.create(102, R.string.catalog, R.drawable.ic_launcher, true, this),
-            NavMenuItem.create(103, R.string.scan, R.drawable.ic_launcher, true, this),
+            NavMenuItem.create(101, R.string.my_list, R.drawable.list, true, this),
+            NavMenuItem.create(102, R.string.catalog, R.drawable.notebook, true, this),
+            NavMenuItem.create(103, R.string.scan, R.drawable.camera, true, this),
             NavTitleItem.create(200, R.string.setting),
-            NavMenuItem.create(201, R.string.facebook, R.drawable.ic_launcher, true, this),
-		    NavMenuItem.create(202, R.string.twitter, R.drawable.ic_launcher, true, this),
-		    NavMenuItem.create(203, R.string.language, R.drawable.ic_launcher, true, this),
-		    NavMenuItem.create(204, R.string.reset_bd, R.drawable.ic_launcher, true, this),
-		    NavMenuItem.create(205, R.string.help, R.drawable.ic_launcher, true, this)};
+            NavMenuItem.create(201, R.string.facebook, R.drawable.facebook, true, this),
+		    NavMenuItem.create(202, R.string.twitter, R.drawable.twitter, true, this),
+		    NavMenuItem.create(203, R.string.language, R.drawable.comments, true, this),
+		    NavMenuItem.create(204, R.string.reset_bd, R.drawable.recycle, true, this),
+		    NavMenuItem.create(205, R.string.help, R.drawable.help, true, this)};
 
 
 
@@ -156,12 +157,15 @@ public class MenuActivity extends Activity implements MenuAdapter.SelectedListBu
             case FragmentIndexes.FRAGMENT_HOME:
                 fragment = HomeFragment.newInstance(FragmentIndexes.FRAGMENT_HOME);
                 break;
-            case FragmentIndexes.FRAGMENT_CATALOG:
-                //fragment = QuotesFragment.newInstance(FragmentIndexes.MY_QUOTES_INDEX);
-                break;
-            case FragmentIndexes.FRAGMENT_SCAN:
-                //fragment = QuotesFragment.newInstance(FragmentIndexes.FAVORITES_QUOTES_INDEX);
-                break;
+//            case FragmentIndexes.FRAGMENT_CATALOG:
+//                //fragment = QuotesFragment.newInstance(FragmentIndexes.MY_QUOTES_INDEX);
+//                break;
+//            case FragmentIndexes.FRAGMENT_SCAN:
+//                //fragment = QuotesFragment.newInstance(FragmentIndexes.FAVORITES_QUOTES_INDEX);
+//                break;
+         default:
+        	 Toast.makeText(this, "Funcionalidade en cosntrucción", Toast.LENGTH_LONG).show();
+        	 return;
            
         }
 

@@ -93,8 +93,8 @@ public class HomeFragment extends Fragment {
 		return home;
 	}
 	
-	public void listBuy() {
-		//Recreamos a lista
+	public void reloadUserShoppingLists() {
+		//Recreamos o conxunto de listas de compra do usuario
 		
 		adapter = new AdapterListas(getActivity(), misListas);
 		list.setAdapter(adapter);
@@ -122,7 +122,7 @@ public class HomeFragment extends Fragment {
 	@Override
 	public void onResume() {
 		super.onResume();
-		listBuy();
+		reloadUserShoppingLists();
 	}
 	
 	

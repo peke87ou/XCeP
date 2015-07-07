@@ -22,7 +22,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtusername"
-        android:inputType="text" />
+        android:inputType="text" 
+        android:digits="0,1,2,3,4,5,6,7,8,9,*,qwertzuiopasdfghjklyxcvbnmñ,_,-" 
+  		/>
 
     <TextView
         android:id="@+id/txtpassword"
@@ -38,7 +40,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtpassword"
-        android:inputType="textPassword" />
+        android:inputType="textPassword" 
+        android:digits="0,1,2,3,4,5,6,7,8,9,*,qwertzuiopasdfghjklyxcvbnmñ,_,-" 
+  		/>
 
     <com.gc.materialdesign.views.ButtonRectangle
         android:id="@+id/login"

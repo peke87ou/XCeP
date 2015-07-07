@@ -86,7 +86,7 @@ public class SignupActivity extends Activity {
 									mensaje = "O email que intenta rexistrar xa existe";
 									break;
 								default:
-									mensaje = "Error no rexistro";
+									mensaje = "Erro no rexistro";
 									break;
 								}
 								Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_LONG).show();
