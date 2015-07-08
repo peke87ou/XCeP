@@ -16,9 +16,10 @@ public class SignUpTest extends ActivityInstrumentationTestCase2<SignupActivity>
 	private Solo solo;
 	private SignupActivity singup;
 	private TestHelper helper;
-	static int TIME_OUT_SINGUP = 30000;
 	private EditText username,password,repassword, email;
 	private ButtonRectangle buttonsign;
+
+	static int TIME_OUT_SINGUP = 30000;
 
 	public SignUpTest(Class<SignupActivity> activityClass) {
 		super(activityClass);

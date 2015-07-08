@@ -73,11 +73,11 @@ public class Lista extends ParseObject {
 		saveInBackground();
 	}
 
-	public ParseRelation<ParseObject> getIdProducts() {
+	public ParseRelation<Produto> getIdProducts() {
 		return getRelation("idProducts");
 	}
 
-	public void setIdProducts(double idProducts) {
+	public void setIdProducts(Produto idProducts) {
 		put("idProducts", idProducts);
 	}
 

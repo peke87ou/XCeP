@@ -7,9 +7,13 @@ public enum LoginEnum {
 						"irina"
 					),
 		INCORRECTO	(
-						"irina",
+						"iria",
 						"passmal"
-					);
+					),
+		INCORRECTO_EMPTY	(
+				"",
+				""
+		);
 		
 		private String user;
 		private String pass;

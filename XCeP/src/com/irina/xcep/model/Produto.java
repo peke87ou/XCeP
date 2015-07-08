@@ -1,9 +1,8 @@
 package com.irina.xcep.model;
 
-import java.util.List;
-import java.util.Map;
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
+import com.parse.ParseRelation;
 
 @ParseClassName("Product")
 public class Produto extends ParseObject {
@@ -72,19 +71,19 @@ public class Produto extends ParseObject {
 		put("mark", marca);
 	}
 
-	public List<Map<String, Produto>> getPrezoPorSupermercado() {
-		return getList("PrizeMarket");
+	public ParseRelation<Prezo> getPrezoPorSupermercado() {
+		return getRelation("PrizeMarket");
 	}
 
-	public void setPrezoPorSupermercado(List<Map<String, Produto>> prezoPorSupermercado) {
+	public void setPrezoPorSupermercado(Prezo prezoPorSupermercado) {
 		put("PrizeMarket", prezoPorSupermercado);
 	}
 
-	public List<String> getTags() {
-		return getList("tags");
+	public ParseRelation<Tag> getTags() {
+		return getRelation("tags");
 	}
 
-	public void setTags(List<String> tags) {
+	public void setTags(Tag tags) {
 		put("tags", tags);
 	}
 	
