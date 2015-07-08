@@ -23,7 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtusername"
         android:inputType="text" 
-        android:digits="0,1,2,3,4,5,6,7,8,9,*,qwertzuiopasdfghjklyxcvbnmñ,_,-" 
+        android:digits="0,1,2,3,4,5,6,7,8,9,*,qwertzuiopasdfghjklyxcvbnm,QWERTTZUIOPASDFGHJKLYXCVBNM,_,-"
+        android:maxLength="30"
   		/>
 
     <TextView
@@ -40,8 +41,10 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtpassword"
-        android:inputType="textPassword" 
-        android:digits="0,1,2,3,4,5,6,7,8,9,*,qwertzuiopasdfghjklyxcvbnmñ,_,-" 
+        android:inputType="textPassword|textNoSuggestions|" 
+        android:digits="0,1,2,3,4,5,6,7,8,9,*,qwertzuiopasdfghjklyxcvbnm,QWERTTZUIOPASDFGHJKLYXCVBNM,_,-"
+        android:maxLength="8"
+        
   		/>
 
     <com.gc.materialdesign.views.ButtonRectangle

@@ -4,7 +4,7 @@
     
     <string name="app_name">XCeP</string>
     <string name="Username">Nome</string>
-    <string name="Password">Contrasinal</string>
+    <string name="Password">Contrasinal </string>
     <string name="RePassword">Volva introducir o contrasinal</string>
     <string name="Email">Enderezo electrónico</string>
     <string name="LoginBtn">Iniciar sesión</string>
