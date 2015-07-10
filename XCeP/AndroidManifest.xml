@@ -46,6 +46,7 @@
             android:theme="@style/CustomTheme">
         </activity>
         
+        
     </application>
 
 </manifest>

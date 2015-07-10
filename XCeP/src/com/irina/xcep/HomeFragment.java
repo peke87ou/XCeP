@@ -24,6 +24,7 @@ import com.gc.materialdesign.views.ButtonFloat;
 import com.gc.materialdesign.views.ButtonRectangle;
 import com.irina.xcep.adapters.AdapterListas;
 import com.irina.xcep.model.Lista;
+import com.irina.xcep.utils.FragmentIndexes;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -117,6 +118,14 @@ public class HomeFragment extends Fragment {
 				}
 			}
 		});
+		
+		list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+	        @Override
+	        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+(	        	(MenuActivity)getActivity()).loadFragment(FragmentIndexes.FRAGMENT_LIST);
+	            }
+	         });
 	}
 	
 	@Override

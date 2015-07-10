@@ -26,7 +26,7 @@ import com.irina.xcep.utils.FragmentIndexes;
 public class MenuActivity extends Activity implements MenuAdapter.SelectedListButton, AdapterView.OnItemClickListener{
 
 
-    private int mCurrentFragmentIndex;
+    public int mCurrentFragmentIndex;
     private static final String CURRENT_FRAGMENT_INDEX = "current_fragment";
 
 
@@ -148,7 +148,7 @@ public class MenuActivity extends Activity implements MenuAdapter.SelectedListBu
 
 
 
-    private void loadFragment(int index) {
+    public void loadFragment(int index) {
 
         Fragment fragment = null;
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -156,6 +156,10 @@ public class MenuActivity extends Activity implements MenuAdapter.SelectedListBu
         switch (index) {
             case FragmentIndexes.FRAGMENT_HOME:
                 fragment = HomeFragment.newInstance(FragmentIndexes.FRAGMENT_HOME);
+                break;
+            case FragmentIndexes.FRAGMENT_LIST:
+                fragment = ListFragment.newInstance(FragmentIndexes.FRAGMENT_LIST);
+               // transaction.add(R.id.container, fragment).commit();
                 break;
 //            case FragmentIndexes.FRAGMENT_CATALOG:
 //                //fragment = QuotesFragment.newInstance(FragmentIndexes.MY_QUOTES_INDEX);
