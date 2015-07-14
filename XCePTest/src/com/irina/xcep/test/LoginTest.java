@@ -47,7 +47,7 @@ public class LoginTest extends ActivityInstrumentationTestCase2<LoginActivity> {
     }
 	
 	
-	public void testLogin() {
+	public void testLoginOk() {
 		
 		helper.setLoginData(LoginEnum.CORRECTO);
 		
@@ -60,14 +60,14 @@ public class LoginTest extends ActivityInstrumentationTestCase2<LoginActivity> {
 	}
 	
 	
-	public void testLoginFailed() {
+	public void testLoginFailedCredentials() {
 		
 		helper.setLoginData(LoginEnum.INCORRECTO);
 		
 		solo.enterText(username, helper.getUser());
 		solo.enterText(password, helper.getPass());
 		solo.clickOnView(buttonlogin);
-		solo.searchText("Este usuario non existe, por favor rexistrese");
+		solo.searchText("As credecnciales son inválidas, se non está auténticado no sistema, por favor rexistrese");
 	}
 	
 	public void testLoginFailedEmpty() {

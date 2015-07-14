@@ -3,6 +3,7 @@ package com.irina.xcep;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
@@ -56,6 +57,7 @@ public class LoginActivity extends Activity {
 									Toast.makeText(getApplicationContext(),	R.string.conect_Ok, Toast.LENGTH_LONG).show();
 									finish();
 								} else {
+									Log.i("Error Login", e.getMessage() +"   l   "   + e.getLocalizedMessage()+ "  code   "+ e.getCode()+"cause " + e.getCause()+"");
 									Toast.makeText(getApplicationContext(),	R.string.conect_ko_login, Toast.LENGTH_LONG).show();
 								}
 							}
