@@ -49,7 +49,7 @@ public class SignUpTest extends ActivityInstrumentationTestCase2<SignupActivity>
     }
 	
 	
-	public void testSingup() {
+	public void testSingupOk() {
 		
 		helper.setSignData(SignUpEnum.CORRECTO);
 		
@@ -82,7 +82,7 @@ public class SignUpTest extends ActivityInstrumentationTestCase2<SignupActivity>
 		solo.searchText("O usuario que intenta rexistrar xa existe, Loguese!");
 	}
 	
-	public void testSingupFailedMail() {
+	public void testSingupFailedMailFormat() {
 		
 		helper.setSignData(SignUpEnum.INCORRECTO_MAIL);
 	
@@ -94,7 +94,7 @@ public class SignUpTest extends ActivityInstrumentationTestCase2<SignupActivity>
 		solo.searchText("O seu enderezo electrónico é inválido");
 	}
 	
-	public void testSingupFailedMailExiste() {
+	public void testSingupFailedMailExist() {
 		
 		helper.setSignData(SignUpEnum.INCORRECTO_MAIL_EXISTE);
 	
@@ -106,7 +106,7 @@ public class SignUpTest extends ActivityInstrumentationTestCase2<SignupActivity>
 		solo.searchText("O email que intenta rexistrar xa existe");
 	}
 	
-	public void testSingupFailedPass() {
+	public void testSingupFailedNotEqualPass() {
 		
 		helper.setSignData(SignUpEnum.INCORRECTO_PASS);
 		
