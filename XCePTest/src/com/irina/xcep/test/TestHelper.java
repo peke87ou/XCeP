@@ -6,6 +6,7 @@ import android.util.Log;
 import com.gc.materialdesign.views.ButtonRectangle;
 import com.irina.xcep.HomeFragment;
 import com.irina.xcep.R;
+import com.irina.xcep.test.enums.AddListEnum;
 import com.irina.xcep.test.enums.LoginEnum;
 import com.irina.xcep.test.enums.SignUpEnum;
 import com.robotium.solo.Solo;
@@ -15,6 +16,7 @@ public class TestHelper {
 	private Solo solo;
 	private LoginEnum loginData;
 	private SignUpEnum registerData;
+	private AddListEnum addListData;
 	
 	public TestHelper(Solo s) {
 		solo= s;
@@ -49,7 +51,13 @@ public class TestHelper {
 	public String getEmailSign(){
 		return this.registerData.getMail();
 	}
-	
+	public void setAddListData(AddListEnum addListData){
+		this.addListData = addListData;
+	}
+
+	public String getNameList(){
+		return this.addListData.getNameList();
+	}
 	public void logout() {
 		
 		Fragment home = solo.getCurrentActivity().getFragmentManager().findFragmentById(R.layout.fragment_home);

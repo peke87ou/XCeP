@@ -24,7 +24,7 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-@SuppressLint("NewApi")
+
 public class AddShoppingListActivity extends Activity{
 	
 	ButtonRectangle btncancel, btnacept;
