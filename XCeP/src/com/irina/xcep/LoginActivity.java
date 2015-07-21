@@ -57,7 +57,7 @@ public class LoginActivity extends Activity {
 									Toast.makeText(getApplicationContext(),	R.string.conect_Ok, Toast.LENGTH_LONG).show();
 									finish();
 								} else {
-									Log.i("Error Login", e.getMessage() +"   l   "   + e.getLocalizedMessage()+ "  code   "+ e.getCode()+"cause " + e.getCause()+"");
+									Log.i("Error Login", e.getMessage().intern() +"   l   "   + e.getLocalizedMessage()+ "  code   "+ e.getCode()+"cause " + e.getCause()+""+ e.hashCode());
 									Toast.makeText(getApplicationContext(),	R.string.conect_ko_login, Toast.LENGTH_LONG).show();
 								}
 							}
