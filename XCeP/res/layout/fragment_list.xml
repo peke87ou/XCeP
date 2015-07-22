@@ -57,6 +57,7 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" >
+                    
                 </LinearLayout>
                  <LinearLayout
                     android:id="@+id/tab_scan"

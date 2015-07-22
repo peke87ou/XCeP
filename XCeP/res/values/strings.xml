@@ -41,7 +41,7 @@
  	<string name="twitter">Twitter</string>
  	<string name="language">Idioma</string>
  	<string name="reset_bd">Reiniciar Datos</string>
- 	<string name="help">Axuda</string>
+ 	<string name="help">Acerca de ...</string>
      
     <!--  <style name="DefaultButtonText">
 	   <item name="android:layout_width">fill_parent</item>

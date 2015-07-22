@@ -1,8 +1,15 @@
 package com.irina.xcep;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -79,7 +86,7 @@ public class MenuActivity extends Activity implements MenuAdapter.SelectedListBu
         this.mListView.setOnItemClickListener(/*OnItemClickListener*/this);
 
 
-        MenuAdapter menuAdapter = new MenuAdapter(this, R.layout.list_view_item_clip_menu, menu,/*SelectedListButton*/this);
+        MenuAdapter menuAdapter = new MenuAdapter(this, R.layout.item_list_menu, menu,/*SelectedListButton*/this);
 
         MergeAdapter mergeAdapter = new MergeAdapter();
         mergeAdapter.addAdapter(menuAdapter);
@@ -137,13 +144,13 @@ public class MenuActivity extends Activity implements MenuAdapter.SelectedListBu
     private NavDrawerItem[] menu = new NavDrawerItem[]{
             NavTitleItem.create(100, R.string.app_name),
             NavMenuItem.create(101, R.string.my_list, R.drawable.list, true, this),
-            NavMenuItem.create(102, R.string.catalog, R.drawable.server, true, this),
-            NavMenuItem.create(103, R.string.scan, R.drawable.camera, true, this),
+            NavMenuItem.create(102, R.string.catalog, R.drawable.ic_maps_store_mall_directory, true, this),
+            NavMenuItem.create(103, R.string.scan, R.drawable.ic_navigation_fullscreen, true, this),
             NavTitleItem.create(200, R.string.setting),
             NavMenuItem.create(201, R.string.facebook, R.drawable.facebook, true, this),
 		    NavMenuItem.create(202, R.string.twitter, R.drawable.twitter, true, this),
 		    NavMenuItem.create(203, R.string.language, R.drawable.comments, true, this),
-		    NavMenuItem.create(204, R.string.reset_bd, R.drawable.recycle, true, this),
+//		    NavMenuItem.create(204, R.string.reset_bd, R.drawable.recycle, true, this),
 		    NavMenuItem.create(205, R.string.help, R.drawable.help, true, this)};
 
 
@@ -158,9 +165,17 @@ public class MenuActivity extends Activity implements MenuAdapter.SelectedListBu
                 fragment = HomeFragment.newInstance(FragmentIndexes.FRAGMENT_HOME);
                 break;
             case FragmentIndexes.FRAGMENT_LIST:
-                fragment = ListFragment.newInstance(FragmentIndexes.FRAGMENT_LIST);
+                fragment = DetailListFragment.newInstance(FragmentIndexes.FRAGMENT_LIST);
                // transaction.add(R.id.container, fragment).commit();
                 break;
+                
+            case FragmentIndexes.FACEBOOK:
+            	shareFacebook();
+            	return;
+            	
+            case FragmentIndexes.TWITTER:
+            	shareTwitter();
+            	return;
 //            case FragmentIndexes.FRAGMENT_CATALOG:
 //                //fragment = QuotesFragment.newInstance(FragmentIndexes.MY_QUOTES_INDEX);
 //                break;
@@ -212,4 +227,50 @@ public class MenuActivity extends Activity implements MenuAdapter.SelectedListBu
     public void onSelectedButton(int type) {
 
     }
+    
+    /**
+     * Redes sociales
+     * */
+    
+    public void shareFacebook(){
+    	
+    	Toast.makeText(this, "Se comparte en Facebook la aplicación", Toast.LENGTH_LONG).show();
+    	/*Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject");
+        shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Example text");    
+
+        startActivity(Intent.createChooser(shareIntent, "Titulo"));*/
+    	
+    	Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+    	shareIntent.setType("text/plain");
+    	shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Xecp");
+		shareIntent.putExtra(android.content.Intent.EXTRA_TEXT,
+				"Icono");
+		//shareIntent.putExtra(Intent.EXTRA_STREAM, "http://www.google.es");
+
+		PackageManager pm = this.getPackageManager();
+		List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent,
+				0);
+		for (final ResolveInfo app : activityList) {
+			if ((app.activityInfo.name).contains("facebook")) {
+				final ActivityInfo activity = app.activityInfo;
+				final ComponentName name = new ComponentName(
+						activity.applicationInfo.packageName, activity.name);
+				shareIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+				shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+						| Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+				shareIntent.setComponent(name);
+				this.startActivity(shareIntent);
+				break;
+			}
+		}
+
+    }
+     
+    public void shareTwitter(){
+    	
+    	Toast.makeText(this, "Se comparte en Twitter la aplicación", Toast.LENGTH_LONG).show();
+    }
+    
 }

@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.gc.materialdesign.views.ButtonFloat;
 
-public class ListFragment extends Fragment {
+public class DetailListFragment extends Fragment {
 	
 	// Declaración de variables
 //	ButtonRectangle logout;
@@ -30,8 +30,8 @@ public class ListFragment extends Fragment {
 	
 	private TabHost tabHost;
 	
-	public static ListFragment newInstance (int Index){
-		ListFragment fragment = new ListFragment();
+	public static DetailListFragment newInstance (int Index){
+		DetailListFragment fragment = new DetailListFragment();
 		Bundle args = new Bundle();
 		
 		args.putInt("Index", Index);
@@ -59,12 +59,12 @@ public class ListFragment extends Fragment {
 		 
 		spec=tabHost.newTabSpec("Catálogo");
 		spec.setContent(R.id.tab_catalog);
-		spec.setIndicator("",res.getDrawable(R.drawable.server));
+		spec.setIndicator("",res.getDrawable(R.drawable.ic_maps_store_mall_directory));
 		tabHost.addTab(spec);
 
 		spec=tabHost.newTabSpec("Escaner");
 		spec.setContent(R.id.tab_scan);
-		spec.setIndicator("",res.getDrawable(R.drawable.camera));
+		spec.setIndicator("",res.getDrawable(R.drawable.ic_navigation_fullscreen));
 		tabHost.addTab(spec);
 		
 		tabHost.setCurrentTab(0);

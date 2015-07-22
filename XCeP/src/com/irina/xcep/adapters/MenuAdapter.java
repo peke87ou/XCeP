@@ -111,7 +111,7 @@ public class MenuAdapter extends ArrayAdapter<NavDrawerItem> implements View.OnC
 
         if (convertView == null) {
             convertView = ((LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
-                    .inflate(R.layout.list_view_item_clip_menu, parent, false);
+                    .inflate(R.layout.item_list_menu, parent, false);
             TextView labelView = (TextView) convertView
                     .findViewById( R.id.menu_title );
             ImageView iconView = (ImageView) convertView
