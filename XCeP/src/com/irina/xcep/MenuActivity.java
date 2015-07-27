@@ -251,7 +251,6 @@ public class MenuActivity extends Activity implements MenuAdapter.SelectedListBu
     	    }
     	}
 
-    	// As fallback, launch sharer.php in a browser
     	if (!facebookAppFound) {
     	    String sharerUrl = "https://www.facebook.com/sharer/sharer.php?u=" + urlToShare;
     	    intent = new Intent(Intent.ACTION_VIEW, Uri.parse(sharerUrl));
@@ -263,7 +262,29 @@ public class MenuActivity extends Activity implements MenuAdapter.SelectedListBu
      
     public void shareTwitter(){
     	
-    	Toast.makeText(this, "Se comparte en Twitter la aplicación", Toast.LENGTH_LONG).show();
+    	
+    	//FIXME actualizar enlace hacia el oficial de Xecp
+    	String urlToShare = "https://play.google.com/store/apps/details?id=com.bandainamcogames.dbzdokkanww";
+    	Intent intent = new Intent(Intent.ACTION_SEND);
+    	intent.setType("text/plain");
+    	intent.putExtra(Intent.EXTRA_TEXT, urlToShare);
+
+    	boolean twitterAppFound = false;
+    	List<ResolveInfo> matches = getPackageManager().queryIntentActivities(intent, 0);
+    	for (ResolveInfo info : matches) {
+    	    if (info.activityInfo.packageName.toLowerCase().startsWith("com.twitter")) {
+    	        intent.setPackage(info.activityInfo.packageName);
+    	        twitterAppFound = true;
+    	        break;
+    	    }
+    	}
+
+    	if (!twitterAppFound) {
+    	    urlToShare = "http://twitter.com/share?text="+urlToShare;
+    	    intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlToShare));
+    	}
+    	
+    	startActivity(intent);
     }
     
 }
