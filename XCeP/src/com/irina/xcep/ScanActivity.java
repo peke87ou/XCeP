@@ -1,5 +1,7 @@
 package com.irina.xcep;
 
-public class ScanActivity {
+import android.app.Activity;
+
+public class ScanActivity extends Activity{
 
 }

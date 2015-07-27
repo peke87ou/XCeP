@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -27,6 +28,7 @@ import com.irina.xcep.adapters.MergeAdapter;
 import com.irina.xcep.menu.navitems.NavDrawerItem;
 import com.irina.xcep.menu.navitems.NavMenuItem;
 import com.irina.xcep.menu.navitems.NavTitleItem;
+import com.irina.xcep.model.Supermercado;
 import com.irina.xcep.utils.FragmentIndexes;
 
 
@@ -42,6 +44,8 @@ public class MenuActivity extends Activity implements MenuAdapter.SelectedListBu
     private ActionBarDrawerToggle mDrawerToggle;
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
+    public String mNameList= "";
+    public Supermercado mMarketSelected = null;
 
 
     @Override
@@ -165,7 +169,8 @@ public class MenuActivity extends Activity implements MenuAdapter.SelectedListBu
                 fragment = HomeFragment.newInstance(FragmentIndexes.FRAGMENT_HOME);
                 break;
             case FragmentIndexes.FRAGMENT_LIST:
-                fragment = DetailListFragment.newInstance(FragmentIndexes.FRAGMENT_LIST);
+            	fragment = DetailListFragment.newInstance(FragmentIndexes.FRAGMENT_LIST);
+                
                // transaction.add(R.id.container, fragment).commit();
                 break;
                 

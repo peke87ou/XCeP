@@ -31,22 +31,30 @@
         
          <activity 
             android:name=".LoginActivity"
-            android:theme="@style/CustomTheme">
+            android:theme="@style/CustomTheme"
+            android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
         
           <activity 
             android:name=".SignupActivity"
-            android:theme="@style/CustomTheme">
+            android:theme="@style/CustomTheme"
+            android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
         <activity 
             android:name=".MenuActivity" 
-            android:theme="@style/CustomTheme">
+            android:theme="@style/CustomTheme"
+            android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
         <activity 
             android:name=".AddShoppingListActivity" 
-            android:theme="@style/CustomTheme">
+            android:theme="@style/CustomTheme"
+            android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
-        
+         <activity 
+            android:name=".ScanActivity" 
+            android:theme="@style/CustomTheme"
+            android:configChanges="keyboardHidden|orientation|screenSize">
+        </activity>
         
     </application>
 

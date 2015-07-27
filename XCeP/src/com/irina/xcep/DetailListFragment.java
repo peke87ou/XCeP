@@ -1,6 +1,7 @@
 package com.irina.xcep;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,12 +10,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
+import android.widget.TabHost.OnTabChangeListener;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gc.materialdesign.views.ButtonFloat;
+import com.irina.xcep.model.Supermercado;
+import com.squareup.picasso.Picasso;
 
 public class DetailListFragment extends Fragment {
 	
@@ -27,6 +33,7 @@ public class DetailListFragment extends Fragment {
 //	ImageButton addlist;
 //	// Solicitar usuario actual do Parse.com
 //	ParseUser currentUser = ParseUser.getCurrentUser();
+	private Supermercado mMarketSelected;
 	
 	private TabHost tabHost;
 	
@@ -46,11 +53,11 @@ public class DetailListFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		
 		RelativeLayout home = (RelativeLayout) inflater.inflate(R.layout.fragment_list, container, false);
-		
+			
 		Resources res = getResources();
 		tabHost = (TabHost) home.findViewById(android.R.id.tabhost);
 		tabHost.setup();
-		
+				
 		
 		TabHost.TabSpec spec=tabHost.newTabSpec("Lista da compra");
 		spec.setContent(R.id.tab_list_buy);
@@ -69,6 +76,34 @@ public class DetailListFragment extends Fragment {
 		
 		tabHost.setCurrentTab(0);
 		// Convertir currentUser en String
+		TextView txtuser = (TextView) home.findViewById(R.id.idNameList);
+		txtuser.setText(((MenuActivity)getActivity()).mNameList);
+		ImageView imageMarket =  (ImageView) home.findViewById(R.id.imageMarket);
+		if(mMarketSelected ==null){
+			mMarketSelected = ((MenuActivity)getActivity()).mMarketSelected;
+			if(mMarketSelected !=null){
+				Picasso.with(getActivity()).load(mMarketSelected.getUrlLogo().getUrl()).into(imageMarket);
+			}
+		}else{
+			Picasso.with(getActivity()).load(mMarketSelected.getUrlLogo().getUrl()).into(imageMarket);
+		}
+		
+		
+		tabHost.setOnTabChangedListener(new OnTabChangeListener() {
+			
+			@Override
+			public void onTabChanged(String tabId) {
+				Toast.makeText(getActivity(), "ID: "+ tabId, Toast.LENGTH_LONG).show();
+				if (tabId == "Escaner") {
+					
+					
+				}
+//				
+//				//startActivityForResult(intent, requestCode)(intent);		
+				
+			}
+		});
+		
 //		String struser = currentUser.getUsername().toString();
 //		TextView txtuser = (TextView) home.findViewById(R.id.txtuser);
 //		txtuser.setText(this.getString(R.string.text_login_home_user )+ " "  + struser);

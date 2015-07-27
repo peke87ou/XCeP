@@ -3,6 +3,8 @@ package com.irina.xcep;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.w3c.dom.NameList;
+
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -123,7 +125,15 @@ public class HomeFragment extends Fragment {
 
 	        @Override
 	        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-(	        	(MenuActivity)getActivity()).loadFragment(FragmentIndexes.FRAGMENT_LIST);
+	        	((MenuActivity)getActivity()).mNameList = misListas.get(position).getNome();
+	        	try {
+					((MenuActivity)getActivity()).mMarketSelected = misListas.get(position).getIdSupermercado().getQuery().getFirst();
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+	        	((MenuActivity)getActivity()).loadFragment(FragmentIndexes.FRAGMENT_LIST);
 	            }
 	         });
 	}

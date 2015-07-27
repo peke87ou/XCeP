@@ -20,6 +20,33 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+               >
+
+                <TextView
+                    android:id="@+id/idNameList"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.36"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="HOLTA"
+            
+                    android:textSize="25sp" />
+
+                <ImageView
+                    android:id="@+id/imageMarket"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="0.36"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:src="@drawable/abc_ab_bottom_solid_dark_holo" />
+
+            </LinearLayout>
+
             <TabWidget
                 android:id="@android:id/tabs"
                 android:layout_width="match_parent"
@@ -45,7 +72,7 @@
                     <ListView
                         android:id="@+id/list_buy"
                         android:layout_width="match_parent"
-                        android:layout_height="454dp"
+                        android:layout_height="match_parent"
                         android:choiceMode="singleChoice"
                         android:divider="@android:color/transparent"
                         android:dividerHeight="0dp" >
@@ -64,9 +91,17 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" >
+
+                     <SurfaceView
+                         android:id="@+id/surfaceView1"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content" />
+                     
                 </LinearLayout>
             </FrameLayout>
+
         </LinearLayout>
+
     </TabHost>
 
 </RelativeLayout>
