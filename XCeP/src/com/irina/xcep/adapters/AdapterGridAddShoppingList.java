@@ -30,7 +30,7 @@ public class AdapterGridAddShoppingList extends ArrayAdapter<Supermercado>{
           final Supermercado market = getItem(position);  
           
           if (convertView == null) {
-
+        	  
               grid = new View(mContext);
               grid = inflater.inflate(R.layout.item_grid_add_shopping_list, null);
               TextView textView = (TextView) grid.findViewById(R.id.title_market_add_list);
