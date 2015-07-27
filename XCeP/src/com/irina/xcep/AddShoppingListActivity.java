@@ -36,6 +36,7 @@ public class AddShoppingListActivity extends Activity{
 	private EditText nameList;
 	private String nameListtxt;
 	private Supermercado idSuper;
+	private int posicion = 0;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,7 @@ public class AddShoppingListActivity extends Activity{
 		grid=(GridView)findViewById(R.id.grid_logo_market);
         grid.setAdapter(adapter);
         grid.setChoiceMode(GridView.CHOICE_MODE_SINGLE);
+        
         
         ParseQuery<Supermercado> query = ParseQuery.getQuery(Supermercado.class);
 		query.findInBackground(new FindCallback<Supermercado>() {
@@ -114,6 +116,7 @@ public class AddShoppingListActivity extends Activity{
 		
 		//Id supermercado seleccionado
 		if (idSuper == null ){
+			
 			Toast.makeText(AddShoppingListActivity.this, "Non seleccionou ningún supermercado", Toast.LENGTH_SHORT).show();
 		}else{
 			addlist.setIdSupermercado(idSuper);

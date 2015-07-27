@@ -7,7 +7,7 @@ public enum LoginEnum {
 						"irina"
 					),
 		INCORRECTO	(
-						"iria",
+						"NonUsuario",
 						"passmal"
 					),
 		INCORRECTO_EMPTY	(
