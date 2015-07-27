@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -234,37 +235,29 @@ public class MenuActivity extends Activity implements MenuAdapter.SelectedListBu
     
     public void shareFacebook(){
     	
-    	Toast.makeText(this, "Se comparte en Facebook la aplicación", Toast.LENGTH_LONG).show();
-    	/*Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
-        shareIntent.setType("text/plain");
-        shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject");
-        shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Example text");    
+    	//FIXME actualizar enlace hacia el oficial de Xecp
+    	String urlToShare = "https://play.google.com/store/apps/details?id=com.bandainamcogames.dbzdokkanww";
+    	Intent intent = new Intent(Intent.ACTION_SEND);
+    	intent.setType("text/plain");
+    	intent.putExtra(Intent.EXTRA_TEXT, urlToShare);
 
-        startActivity(Intent.createChooser(shareIntent, "Titulo"));*/
-    	
-    	Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
-    	shareIntent.setType("text/plain");
-    	shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Xecp");
-		shareIntent.putExtra(android.content.Intent.EXTRA_TEXT,
-				"Icono");
-		//shareIntent.putExtra(Intent.EXTRA_STREAM, "http://www.google.es");
+    	boolean facebookAppFound = false;
+    	List<ResolveInfo> matches = getPackageManager().queryIntentActivities(intent, 0);
+    	for (ResolveInfo info : matches) {
+    	    if (info.activityInfo.packageName.toLowerCase().startsWith("com.facebook.katana")) {
+    	        intent.setPackage(info.activityInfo.packageName);
+    	        facebookAppFound = true;
+    	        break;
+    	    }
+    	}
 
-		PackageManager pm = this.getPackageManager();
-		List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent,
-				0);
-		for (final ResolveInfo app : activityList) {
-			if ((app.activityInfo.name).contains("facebook")) {
-				final ActivityInfo activity = app.activityInfo;
-				final ComponentName name = new ComponentName(
-						activity.applicationInfo.packageName, activity.name);
-				shareIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-				shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-						| Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
-				shareIntent.setComponent(name);
-				this.startActivity(shareIntent);
-				break;
-			}
-		}
+    	// As fallback, launch sharer.php in a browser
+    	if (!facebookAppFound) {
+    	    String sharerUrl = "https://www.facebook.com/sharer/sharer.php?u=" + urlToShare;
+    	    intent = new Intent(Intent.ACTION_VIEW, Uri.parse(sharerUrl));
+    	}
+
+    	startActivity(intent);
 
     }
      
