@@ -1,10 +1,25 @@
 package com.irina.xcep;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.graphics.Rect;
+import android.graphics.YuvImage;
+import android.hardware.Camera;
+import android.hardware.Camera.PreviewCallback;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -18,23 +33,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gc.materialdesign.views.ButtonFloat;
+import com.google.zxing.RGBLuminanceSource;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.LuminanceSource;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.Reader;
+import com.google.zxing.Result;
+import com.google.zxing.common.HybridBinarizer;
 import com.irina.xcep.model.Supermercado;
 import com.squareup.picasso.Picasso;
 
-public class DetailListFragment extends Fragment {
-	
-	// Declaración de variables
-//	ButtonRectangle logout;
-//	ListView list;
-//	List<ParseObject> ob;
-//	AdapterListas adapter;
-//	ArrayList<Lista> misListas = new ArrayList<Lista>();
-//	ImageButton addlist;
-//	// Solicitar usuario actual do Parse.com
-//	ParseUser currentUser = ParseUser.getCurrentUser();
+public class DetailListFragment extends Fragment implements SurfaceHolder.Callback{
+
 	private Supermercado mMarketSelected;
-	
+	Camera cam;
+	SurfaceHolder surfaceholder;
+	String previewImagePath;
 	private TabHost tabHost;
+	String resultadoBarCode;
 	
 	public static DetailListFragment newInstance (int Index){
 		DetailListFragment fragment = new DetailListFragment();
@@ -45,6 +61,112 @@ public class DetailListFragment extends Fragment {
 		fragment.setArguments(args);
 		
 		return fragment;
+	}
+	
+	public void prepararCamara(){
+		cam=Camera.open(Camera.CameraInfo.CAMERA_FACING_BACK);
+        Camera.Parameters parameters = cam.getParameters();
+        cam.setDisplayOrientation(90);
+        parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
+        cam.setParameters(parameters);
+        
+        cam.setPreviewCallback(new PreviewCallback(){
+			
+        	public void onPreviewFrame(byte[] data, Camera camera){
+				
+				int ancho=camera.getParameters().getPreviewSize().width;
+				int alto=camera.getParameters().getPreviewSize().height;
+				int formato=camera.getParameters().getPreviewFormat();
+				YuvImage imagen=new YuvImage(data, formato, ancho, alto, null);
+				previewImagePath = getActivity().getFilesDir().toString();
+				File archivo=new File(previewImagePath+"/preview.jpg");
+		        FileOutputStream filecon;
+				try{
+					filecon=new FileOutputStream(archivo);
+					imagen.compressToJpeg(new Rect(0,0,imagen.getWidth(),imagen.getHeight()),90,filecon);
+					Bitmap imagenBmp=BitmapFactory.decodeFile(archivo.toString(), null);
+					Matrix imagenMatrix=new Matrix();
+					imagenMatrix.postRotate(-90);
+					imagenBmp=Bitmap.createBitmap(imagenBmp,0,0,imagenBmp.getWidth(),imagenBmp.getHeight(),imagenMatrix,true);
+					LuminanceSource source=new RGBLuminanceSource(imagenBmp);
+			        BinaryBitmap bmp=new BinaryBitmap(new HybridBinarizer(source));
+					Reader barCodeReader=new MultiFormatReader();
+					try{
+						Result resultado=barCodeReader.decode(bmp);
+						Log.e("valor de resultado",resultado.getText());
+						if (resultado != null && resultadoBarCode == null){
+							//Toast.makeText(getActivity(), resultado.getText(), Toast.LENGTH_LONG).show();
+							resultadoBarCode = resultado.getText();
+							showDialogoAgregarProducto();
+						}
+						
+					}catch(Exception e){}
+				}catch(Exception e){}
+				
+				
+			}
+		});
+        
+        try {
+			cam.reconnect();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			Toast.makeText(getActivity(), "No se pudo acceder a la camara", Toast.LENGTH_LONG).show();
+		}
+        SurfaceView cameraPreview=(SurfaceView)getActivity().findViewById(R.id.surfaceView1);
+        
+        surfaceholder=cameraPreview.getHolder();
+        //surfaceholder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+        surfaceholder.setSizeFromLayout();
+        surfaceholder.addCallback(this);
+	}
+	
+	public void desconectarCamara(){
+
+
+		if(surfaceholder != null)
+			surfaceholder.removeCallback(this);
+		
+		if(cam != null){
+			cam.setPreviewCallback(null);
+			cam.release();
+			cam = null;
+		}
+	}
+	
+	public void showDialogoAgregarProducto(){
+		
+		boolean isProductoEnParse=false;
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+		// Add the buttons
+		builder.setPositiveButton("Agregar producto", new DialogInterface.OnClickListener() {
+		           public void onClick(DialogInterface dialog, int id) {
+		        	   
+		        	   //TODO Agregar resultadoBarCode a parse
+		        	   resultadoBarCode = null;
+		           }
+		       });
+		builder.setNegativeButton("Cerrar", new DialogInterface.OnClickListener() {
+		           public void onClick(DialogInterface dialog, int id) {
+		              resultadoBarCode = null;
+		           }
+		       });
+		AlertDialog dialogo = builder.create();
+		
+		if(isProductoEnParse){
+			
+			dialogo.setTitle("Producto encontrado");
+			dialogo.setMessage("Se ha encontrado el producto "+resultadoBarCode +"\n ¿Desea agregarlo a la lista?");
+			
+		}else{
+			
+			dialogo.setTitle("Producto nuevo");
+			dialogo.setMessage("Se ha encontrado el producto "+resultadoBarCode +"\n ¿Desea agregarlo al sistema?");
+		}
+		
+		dialogo.show();
 	}
 	
 	
@@ -92,82 +214,89 @@ public class DetailListFragment extends Fragment {
 			
 			@Override
 			public void onTabChanged(String tabId) {
-				Toast.makeText(getActivity(), "ID: "+ tabId, Toast.LENGTH_LONG).show();
+				Toast.makeText(getActivity(), "ID: "+ tabId, Toast.LENGTH_SHORT).show();
 				if (tabId == "Escaner") {
+					if(cam==null){
+						prepararCamara();
+					}else{
+						cam.startPreview();
+					}
 					
-					
+					/**
+					 * Lector QR por intent
+					IntentIntegratorBarCode integrator = new IntentIntegratorBarCode(getActivity());
+					integrator.initiateScan();*/
+				}else{
+					if(cam != null)
+						cam.stopPreview();
 				}
-//				
-//				//startActivityForResult(intent, requestCode)(intent);		
-				
 			}
 		});
-		
-//		String struser = currentUser.getUsername().toString();
-//		TextView txtuser = (TextView) home.findViewById(R.id.txtuser);
-//		txtuser.setText(this.getString(R.string.text_login_home_user )+ " "  + struser);
-//		
-//		//Botón desconectarse da app
-//		logout = (ButtonRectangle) home.findViewById(R.id.logout);
-//		logout.setOnClickListener(new OnClickListener() {
-//			public void onClick(View arg0) {
-//				// Desconectar o current user
-//				ParseUser.logOut();
-//				getActivity().finish();
-//			}
-//		});
-//		
-//		//Botón engadir nova lista
-//		addlist = (ImageButton) home.findViewById(R.id.add_list);
-//		addlist.setOnClickListener(new OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				//Ir a páxina engadir unha lista
-//				Intent intent = new Intent(getActivity(), AddShoppingListActivity.class);
-//				startActivity(intent);
-//				
-//			}
-//		});
-		
-//		//Listas da compra
-//		list = (ListView) home.findViewById(R.id.lista_list);
-//		
-//		
+			
 		return home;
 	}
 	
-//	public void reloadUserShoppingLists() {
-//		//Recreamos o conxunto de listas de compra do usuario
-//		
-//		adapter = new AdapterListas(getActivity(), misListas);
-//		list.setAdapter(adapter);
-//				
-//		ParseQuery<Lista> query = ParseQuery.getQuery(Lista.class);
-//		query.include("Market");
-//		//Filtramos as lista para cada usuario logueado na app
-//		query.include("User");
-//		query.whereEqualTo("idUser", currentUser);
-//		//query.include("Products");
-//		query.findInBackground(new FindCallback<Lista>() {
-//			@Override
-//			public void done(List<Lista> objects, ParseException e) {
-//				misListas = (ArrayList<Lista>) objects;
-//				adapter.clear();
-//				if(misListas != null){
-//					adapter.addAll(misListas);
-//				}else{
-//					Toast.makeText(getActivity(), R.string.empty_list, Toast.LENGTH_LONG).show();
-//				}
-//			}
-//		});
-//	}
+	
+	
+	@Override
+	public void onStop() {
+		super.onStop();
+		desconectarCamara();
+	}
+
+	@Override
+	public void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		if(cam!=null)
+			cam.stopPreview();
+	}
 	
 	@Override
 	public void onResume() {
 		super.onResume();
 		//reloadUserShoppingLists();
+		if((tabHost.getCurrentTab() == 2) && (cam != null)){
+			cam.startPreview();
+		}
 	}
 	
+	
+
+	/**
+	 * No se usa actualmente el lector QR por intent
+	 */
+	/*@Deprecated
+	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+		
+		  IntentResultBarcode scanResult = IntentIntegratorBarCode.parseActivityResult(requestCode, resultCode, intent);
+		  if (scanResult != null) {
+			  
+			  Toast.makeText(getActivity(), "Se lee"+scanResult.getContents(), Toast.LENGTH_LONG).show();
+		  }else{
+			  
+			  Toast.makeText(getActivity(), "QR vacío", Toast.LENGTH_LONG).show();
+		  }
+	}*/
+	
+	
+
+	
+	/**
+	 * Surfaceholder callback de la cámara
+	 */
+	public void surfaceChanged(SurfaceHolder holder, int format, int width, int height){
+		try{
+			cam.setPreviewDisplay(surfaceholder);
+		}catch(IOException e){}
+		cam.startPreview();
+	}
+
+	public void surfaceCreated(SurfaceHolder holder){
+	}
+
+	public void surfaceDestroyed(SurfaceHolder holder){
+	}
 	
 	
 	private AbsListView.OnScrollListener mScrollListener = new AbsListView.OnScrollListener() {
@@ -208,8 +337,6 @@ public class DetailListFragment extends Fragment {
 
 
 	            if(mListStateFlying || mListView.getCount() == 0) return;
-
-	           
 
 	        }
 	    };
