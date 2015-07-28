@@ -200,7 +200,11 @@ public class MenuActivity extends Activity implements MenuAdapter.SelectedListBu
         //Store current index
         mCurrentFragmentIndex = index;
         //Add fragment to layout
-        transaction.replace(R.id.container, fragment).commit();
+        transaction.replace(R.id.container, fragment);
+        if(index !=FragmentIndexes.FRAGMENT_HOME){
+        	 transaction.addToBackStack(null);
+        }       
+        transaction.commit();
         mListView.setItemChecked(index, true);
         mDrawerLayout.closeDrawer(mListView);
     }
