@@ -30,8 +30,8 @@ public enum SignUpEnum {
 		),
 		INCORRECTO_PASS	(
 						"pruebaPass",
-						"mail",
-						"mailmal",
+						"pass",
+						"passmal",
 						"prueba@gmail.com"
 				),
 		INCORRECTO_EMPTY	(

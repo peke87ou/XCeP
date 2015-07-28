@@ -3,8 +3,6 @@ package com.irina.xcep;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.w3c.dom.NameList;
-
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;

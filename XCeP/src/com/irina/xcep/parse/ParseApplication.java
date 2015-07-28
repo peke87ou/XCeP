@@ -1,12 +1,13 @@
 package com.irina.xcep.parse;
 
+import android.app.Application;
+
 import com.irina.xcep.model.Lista;
 import com.irina.xcep.model.Supermercado;
 import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
-import android.app.Application;
  
 public class ParseApplication extends Application {
  

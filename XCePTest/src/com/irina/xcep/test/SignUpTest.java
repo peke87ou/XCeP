@@ -115,7 +115,7 @@ public class SignUpTest extends ActivityInstrumentationTestCase2<SignupActivity>
 		solo.enterText(repassword, helper.getRePassSign());
 		solo.enterText(email, helper.getEmailSign());
 		solo.clickOnView(buttonsign);
-		solo.searchText("Las contraseñas no coinciden");
+		solo.searchText("As contrasinais non coinciden");
 	}
 	
 	public void testSingupFailedEmpty() {
