@@ -1,7 +1,6 @@
 package com.irina.xcep.adapters;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +24,6 @@ public class MenuAdapter extends ArrayAdapter<NavDrawerItem> implements View.OnC
 
     private Context context;
     private NavDrawerItem[] items;
-    private Resources res;
-
     private SelectedListButton listener;
 
     public interface SelectedListButton{
@@ -36,7 +33,7 @@ public class MenuAdapter extends ArrayAdapter<NavDrawerItem> implements View.OnC
         super(context, resource, objects);
         this.context = context;
         items = objects;
-        res = context.getResources();
+        context.getResources();
 
         this.listener = listener;
     }

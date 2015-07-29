@@ -22,21 +22,17 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.gc.materialdesign.views.ButtonFloat;
-import com.google.zxing.RGBLuminanceSource;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.LuminanceSource;
 import com.google.zxing.MultiFormatReader;
+import com.google.zxing.RGBLuminanceSource;
 import com.google.zxing.Reader;
 import com.google.zxing.Result;
 import com.google.zxing.common.HybridBinarizer;
@@ -299,45 +295,45 @@ public class DetailListFragment extends Fragment implements SurfaceHolder.Callba
 	}
 	
 	
-	private AbsListView.OnScrollListener mScrollListener = new AbsListView.OnScrollListener() {
-
-	        private int mLastFirstVisibleItem;
-	        private boolean mAnimationCalled = false;
-			private AdapterView<ListAdapter> mListView;
-			private boolean mListStateFlying;
-			private  Object mAddQuoteBtn;
-
-	        @Override
-	        public void onScrollStateChanged(AbsListView view, int scrollState) {
-	            //If we are flying
-	            boolean mListStateFlying = AbsListView.OnScrollListener.SCROLL_STATE_FLING == scrollState;
-	            mAnimationCalled = mListStateFlying ? mAnimationCalled : false;
-	            Log.i("ABDLISTVIEW", "State changed, new state: " + scrollState);
-
-	        }
-
-	        @Override
-	        public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-
-	           
-				if (mAddQuoteBtn == null) return;
-
-
-	            if (!mAnimationCalled && mLastFirstVisibleItem < firstVisibleItem) {
-	                //Scrolling down
-	                ((ButtonFloat) mAddQuoteBtn).hide();
-	                mAnimationCalled = true;
-	            } else if (!mAnimationCalled && mLastFirstVisibleItem > firstVisibleItem) {
-	                //Scrolling up
-	                ((Toast) mAddQuoteBtn).show();
-	                mAnimationCalled = true;
-	            }
-	            mLastFirstVisibleItem = firstVisibleItem;
-
-
-
-	            if(mListStateFlying || mListView.getCount() == 0) return;
-
-	        }
-	    };
+//	private AbsListView.OnScrollListener mScrollListener = new AbsListView.OnScrollListener() {
+//
+//	        private int mLastFirstVisibleItem;
+//	        private boolean mAnimationCalled = false;
+//			private AdapterView<ListAdapter> mListView;
+//			private boolean mListStateFlying;
+//			private  Object mAddQuoteBtn;
+//
+//	        @Override
+//	        public void onScrollStateChanged(AbsListView view, int scrollState) {
+//	            //If we are flying
+//	            boolean mListStateFlying = AbsListView.OnScrollListener.SCROLL_STATE_FLING == scrollState;
+//	            mAnimationCalled = mListStateFlying ? mAnimationCalled : false;
+//	            Log.i("ABDLISTVIEW", "State changed, new state: " + scrollState);
+//
+//	        }
+//
+//	        @Override
+//	        public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+//
+//	           
+//				if (mAddQuoteBtn == null) return;
+//
+//
+//	            if (!mAnimationCalled && mLastFirstVisibleItem < firstVisibleItem) {
+//	                //Scrolling down
+//	                ((ButtonFloat) mAddQuoteBtn).hide();
+//	                mAnimationCalled = true;
+//	            } else if (!mAnimationCalled && mLastFirstVisibleItem > firstVisibleItem) {
+//	                //Scrolling up
+//	                ((Toast) mAddQuoteBtn).show();
+//	                mAnimationCalled = true;
+//	            }
+//	            mLastFirstVisibleItem = firstVisibleItem;
+//
+//
+//
+//	            if(mListStateFlying || mListView.getCount() == 0) return;
+//
+//	        }
+//	    };
 }

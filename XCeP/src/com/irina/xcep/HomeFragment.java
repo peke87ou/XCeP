@@ -6,21 +6,17 @@ import java.util.List;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.gc.materialdesign.views.ButtonFloat;
 import com.gc.materialdesign.views.ButtonRectangle;
 import com.irina.xcep.adapters.AdapterListas;
 import com.irina.xcep.model.Lista;
@@ -144,47 +140,47 @@ public class HomeFragment extends Fragment {
 	
 	
 	
-	private AbsListView.OnScrollListener mScrollListener = new AbsListView.OnScrollListener() {
-
-	        private int mLastFirstVisibleItem;
-	        private boolean mAnimationCalled = false;
-			private AdapterView<ListAdapter> mListView;
-			private boolean mListStateFlying;
-			private  Object mAddQuoteBtn;
-
-	        @Override
-	        public void onScrollStateChanged(AbsListView view, int scrollState) {
-	            //If we are flying
-	            boolean mListStateFlying = AbsListView.OnScrollListener.SCROLL_STATE_FLING == scrollState;
-	            mAnimationCalled = mListStateFlying ? mAnimationCalled : false;
-	            Log.i("ABDLISTVIEW", "State changed, new state: " + scrollState);
-
-	        }
-
-	        @Override
-	        public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-
-	           
-				if (mAddQuoteBtn == null) return;
-
-
-	            if (!mAnimationCalled && mLastFirstVisibleItem < firstVisibleItem) {
-	                //Scrolling down
-	                ((ButtonFloat) mAddQuoteBtn).hide();
-	                mAnimationCalled = true;
-	            } else if (!mAnimationCalled && mLastFirstVisibleItem > firstVisibleItem) {
-	                //Scrolling up
-	                ((Toast) mAddQuoteBtn).show();
-	                mAnimationCalled = true;
-	            }
-	            mLastFirstVisibleItem = firstVisibleItem;
-
-
-
-	            if(mListStateFlying || mListView.getCount() == 0) return;
-
-	           
-
-	        }
-	    };
+//	private AbsListView.OnScrollListener mScrollListener = new AbsListView.OnScrollListener() {
+//
+//	        private int mLastFirstVisibleItem;
+//	        private boolean mAnimationCalled = false;
+//			private AdapterView<ListAdapter> mListView;
+//			private boolean mListStateFlying;
+//			private  Object mAddQuoteBtn;
+//
+//	        @Override
+//	        public void onScrollStateChanged(AbsListView view, int scrollState) {
+//	            //If we are flying
+//	            boolean mListStateFlying = AbsListView.OnScrollListener.SCROLL_STATE_FLING == scrollState;
+//	            mAnimationCalled = mListStateFlying ? mAnimationCalled : false;
+//	            Log.i("ABDLISTVIEW", "State changed, new state: " + scrollState);
+//
+//	        }
+//
+//	        @Override
+//	        public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+//
+//	           
+//				if (mAddQuoteBtn == null) return;
+//
+//
+//	            if (!mAnimationCalled && mLastFirstVisibleItem < firstVisibleItem) {
+//	                //Scrolling down
+//	                ((ButtonFloat) mAddQuoteBtn).hide();
+//	                mAnimationCalled = true;
+//	            } else if (!mAnimationCalled && mLastFirstVisibleItem > firstVisibleItem) {
+//	                //Scrolling up
+//	                ((Toast) mAddQuoteBtn).show();
+//	                mAnimationCalled = true;
+//	            }
+//	            mLastFirstVisibleItem = firstVisibleItem;
+//
+//
+//
+//	            if(mListStateFlying || mListView.getCount() == 0) return;
+//
+//	           
+//
+//	        }
+//	    };
 }

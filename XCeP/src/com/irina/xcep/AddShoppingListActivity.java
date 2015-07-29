@@ -35,7 +35,7 @@ public class AddShoppingListActivity extends Activity{
 	private EditText nameList;
 	private String nameListtxt;
 	private Supermercado idSuper;
-	private int posicion = 0;
+	//private int posicion = 0;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
