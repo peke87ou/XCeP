@@ -7,6 +7,7 @@ import java.io.IOException;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -137,14 +138,17 @@ public class DetailListFragment extends Fragment implements SurfaceHolder.Callba
 		
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 		// Add the buttons
-		builder.setPositiveButton("Agregar producto", new DialogInterface.OnClickListener() {
+		builder.setPositiveButton("Engadir produto", new DialogInterface.OnClickListener() {
 		           public void onClick(DialogInterface dialog, int id) {
 		        	   
 		        	   //TODO Agregar resultadoBarCode a parse
 		        	   resultadoBarCode = null;
+		        	   Intent intent = new Intent(getActivity(), AddProductActivity.class);
+		        	   startActivity(intent);
+		        	  
 		           }
 		       });
-		builder.setNegativeButton("Cerrar", new DialogInterface.OnClickListener() {
+		builder.setNegativeButton("Pechar", new DialogInterface.OnClickListener() {
 		           public void onClick(DialogInterface dialog, int id) {
 		              resultadoBarCode = null;
 		           }
@@ -153,13 +157,13 @@ public class DetailListFragment extends Fragment implements SurfaceHolder.Callba
 		
 		if(isProductoEnParse){
 			
-			dialogo.setTitle("Producto encontrado");
-			dialogo.setMessage("Se ha encontrado el producto "+resultadoBarCode +"\n ¿Desea agregarlo a la lista?");
+			dialogo.setTitle("Produto atopado");
+			dialogo.setMessage("Atopouse o produto "+resultadoBarCode +"\n¿Desexa engadilo a súa lista?");
 			
 		}else{
 			
-			dialogo.setTitle("Producto nuevo");
-			dialogo.setMessage("Se ha encontrado el producto "+resultadoBarCode +"\n ¿Desea agregarlo al sistema?");
+			dialogo.setTitle("Produto novo");
+			dialogo.setMessage("Atopouse o produto  "+resultadoBarCode +"\n¿Desexa engadilo o sistema para o supermercado "+ mMarketSelected.getNome()+ "?");
 		}
 		
 		dialogo.show();

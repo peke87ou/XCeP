@@ -59,7 +59,13 @@
             android:theme="@style/CustomTheme"
             android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
+        <activity 
+            android:name=".AddProductActivity" 
+            android:theme="@style/CustomTheme"
+            android:configChanges="keyboardHidden|orientation|screenSize">
+        </activity>
         
+         
     </application>
 
 </manifest>

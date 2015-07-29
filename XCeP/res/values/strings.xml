@@ -14,7 +14,7 @@
     <string name="action_settings">Configuracion</string>
 	<string name="title_action_bar_login">Logueate</string>
     <string name="title_action_bar_signup">Rexistrate</string>
-    <string name="products"> productos</string>
+    <string name="products"> produtos</string>
     <string name="hint_name_list">Introduza o nome da lista</string>
     <string name="button_cancel_new_list">Cancelar</string>
     <string name="button_add_new_list">Crear</string>
