@@ -3,6 +3,7 @@ package com.irina.xcep.parse;
 import android.app.Application;
 
 import com.irina.xcep.model.Lista;
+import com.irina.xcep.model.Produto;
 import com.irina.xcep.model.Supermercado;
 import com.parse.Parse;
 import com.parse.ParseACL;
@@ -21,7 +22,7 @@ public class ParseApplication extends Application {
         
         ParseObject.registerSubclass(Supermercado.class);
         ParseObject.registerSubclass(Lista.class);
-        //ParseObject.registerSubclass(Produto.class);
+        ParseObject.registerSubclass(Produto.class);
         
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
