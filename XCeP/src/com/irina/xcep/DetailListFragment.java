@@ -3,6 +3,8 @@ package com.irina.xcep;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -37,7 +39,12 @@ import com.google.zxing.RGBLuminanceSource;
 import com.google.zxing.Reader;
 import com.google.zxing.Result;
 import com.google.zxing.common.HybridBinarizer;
+import com.irina.xcep.model.Lista;
+import com.irina.xcep.model.Produto;
 import com.irina.xcep.model.Supermercado;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 import com.squareup.picasso.Picasso;
 
 public class DetailListFragment extends Fragment implements SurfaceHolder.Callback{
@@ -48,6 +55,8 @@ public class DetailListFragment extends Fragment implements SurfaceHolder.Callba
 	String previewImagePath;
 	private TabHost tabHost;
 	String resultadoBarCode;
+	String barcode;
+	boolean isProductoEnParse;
 	
 	public static DetailListFragment newInstance (int Index){
 		DetailListFragment fragment = new DetailListFragment();
@@ -90,11 +99,14 @@ public class DetailListFragment extends Fragment implements SurfaceHolder.Callba
 					Reader barCodeReader=new MultiFormatReader();
 					try{
 						Result resultado=barCodeReader.decode(bmp);
+						
 						Log.e("valor de resultado",resultado.getText());
 						if (resultado != null && resultadoBarCode == null){
 							//Toast.makeText(getActivity(), resultado.getText(), Toast.LENGTH_LONG).show();
 							resultadoBarCode = resultado.getText();
 							showDialogoAgregarProducto();
+							
+							
 						}
 						
 					}catch(Exception e){}
@@ -134,17 +146,48 @@ public class DetailListFragment extends Fragment implements SurfaceHolder.Callba
 	
 	public void showDialogoAgregarProducto(){
 		
-		boolean isProductoEnParse=false;
+		// Mirar se existe na BD
+		ParseQuery<Produto> productos = ParseQuery.getQuery(Produto.class);
+		 
+		productos.whereEqualTo("idBarCode",resultadoBarCode);
+		productos.findInBackground(new FindCallback<Produto>() {
+			@Override
+			public void done(List<Produto> objects, ParseException e) {
+					Log.i("jklsdfjklsdfsdfjkl",objects.size()+"resultado"+resultadoBarCode+"");
+					if (objects.size() > 0){
+						isProductoEnParse = false;
+					}else{
+						isProductoEnParse = true;
+					}
+				
+			}
+		});
+	
+	
 		
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 		// Add the buttons
 		builder.setPositiveButton("Engadir produto", new DialogInterface.OnClickListener() {
 		           public void onClick(DialogInterface dialog, int id) {
-		        	   
-		        	   //TODO Agregar resultadoBarCode a parse
-		        	   resultadoBarCode = null;
-		        	   Intent intent = new Intent(getActivity(), AddProductActivity.class);
-		        	   startActivity(intent);
+		        	   if(isProductoEnParse){
+		        		   barcode = resultadoBarCode;
+			        	   //TODO Agregar resultadoBarCode a parse
+			        	   resultadoBarCode = null;
+			        	   Intent intent = new Intent(getActivity(), AddProductActivity.class);
+			        	   Log.i("QUE ENVIA", barcode);
+			        	   intent.putExtra("MESSAGE",barcode);  
+		                   startActivityForResult(intent, 1);
+		        	   }else{
+		        		   barcode = resultadoBarCode;
+		        		   resultadoBarCode = null;
+//		        		   Toast.makeText(getActivity(), "DETALLE DE PRODUTO", Toast.LENGTH_LONG).show();
+		        		   Intent intent = new Intent(getActivity(), DetailProduct.class);
+//			        	   Log.i("QUE ENVIA", barcode);
+//			        	   intent.putExtra("MESSAGE",barcode);  
+		                   startActivityForResult(intent, 1);
+		        	   }
+		        	  
+		        	 
 		        	  
 		           }
 		       });
@@ -155,6 +198,7 @@ public class DetailListFragment extends Fragment implements SurfaceHolder.Callba
 		       });
 		AlertDialog dialogo = builder.create();
 		
+		Log.i("Esta en parse", isProductoEnParse+"");
 		if(isProductoEnParse){
 			
 			dialogo.setTitle("Produto atopado");
@@ -260,7 +304,6 @@ public class DetailListFragment extends Fragment implements SurfaceHolder.Callba
 			cam.startPreview();
 		}
 	}
-	
 	
 
 	/**

@@ -64,6 +64,11 @@
             android:theme="@style/CustomTheme"
             android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
+        <activity 
+            android:name=".DetailProduct" 
+            android:theme="@style/CustomTheme"
+            android:configChanges="keyboardHidden|orientation|screenSize">
+        </activity>
         
          
     </application>
