@@ -40,6 +40,8 @@ public class AddMarketActivity extends Activity{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		
+		
 		setContentView(R.layout.activity_new_market);
 		nameMarket = (EditText) findViewById(R.id.text_name_market);
 		fotomarket = (ImageView) findViewById(R.id.image_view_market);
