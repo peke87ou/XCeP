@@ -89,10 +89,13 @@ public class AddShoppingListActivity extends Activity{
 				grid=(GridView)findViewById(R.id.grid_logo_market);
 		        grid.setAdapter(adapter);
 		        grid.setChoiceMode(GridView.CHOICE_MODE_SINGLE);
-				
 			}
+			
 		});
         
+		
+		
+		
 		
 		
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
