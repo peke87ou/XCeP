@@ -82,20 +82,16 @@ public class AddShoppingListActivity extends Activity{
 
 				supermercados = (ArrayList<Supermercado>) objects;
 				
-								
+				//FIXME Ver como actualizar la lista de supermercados dentro del adapter
 				//adapter.clear();
 				//adapter.addAll(supermercados);
-				
-				//FIXME Ver como actualizar la lista de supermercados dentro del adapter
 				adapter = new AdapterGridAddShoppingList(AddShoppingListActivity.this, supermercados);
 				grid=(GridView)findViewById(R.id.grid_logo_market);
 		        grid.setAdapter(adapter);
 		        grid.setChoiceMode(GridView.CHOICE_MODE_SINGLE);
 				
-				
-				
-				
 			}
+			
 		});
         
 		
@@ -107,6 +103,7 @@ public class AddShoppingListActivity extends Activity{
         	//Toast.makeText(AddShoppingListActivity.this, "You Clicked at " + supermercados.get(position), Toast.LENGTH_SHORT).show();
         	if (supermercados.size()== position){ //ultima
         		Intent intent = new Intent(AddShoppingListActivity.this, AddMarketActivity.class);
+        		//FIXME invocar como startActivityForResult, y manejar el callback para hacer reload de la lista
                 startActivity(intent);
           	  
                 
