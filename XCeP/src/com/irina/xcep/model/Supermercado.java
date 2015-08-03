@@ -11,6 +11,10 @@ public class Supermercado extends ParseObject{
 	public Supermercado() {
 		
 	}
+	
+	public Supermercado(String nome, ParseFile urlLogo) {
+		
+	}
 
 	public String getNome() {
 		return getString("name");

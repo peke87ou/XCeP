@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -37,6 +38,7 @@ public class AddShoppingListActivity extends Activity{
 	private Supermercado idSuper;
 	//private int posicion = 0;
 	
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -64,6 +66,7 @@ public class AddShoppingListActivity extends Activity{
 			}
 		});
 		
+			
 		adapter = new AdapterGridAddShoppingList(AddShoppingListActivity.this, supermercados);
 		
 		grid=(GridView)findViewById(R.id.grid_logo_market);
@@ -79,19 +82,38 @@ public class AddShoppingListActivity extends Activity{
 
 				supermercados = (ArrayList<Supermercado>) objects;
 				
-				adapter.clear();
-				adapter.addAll(supermercados);
+								
+				//adapter.clear();
+				//adapter.addAll(supermercados);
+				
+				//FIXME Ver como actualizar la lista de supermercados dentro del adapter
+				adapter = new AdapterGridAddShoppingList(AddShoppingListActivity.this, supermercados);
+				grid=(GridView)findViewById(R.id.grid_logo_market);
+		        grid.setAdapter(adapter);
+		        grid.setChoiceMode(GridView.CHOICE_MODE_SINGLE);
+				
+				
+				
 				
 			}
 		});
         
+		
+		
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         	//Toast.makeText(AddShoppingListActivity.this, "You Clicked at " + supermercados.get(position), Toast.LENGTH_SHORT).show();
-        	idSuper = supermercados.get(position);
-             }
+        	if (supermercados.size()== position){ //ultima
+        		Intent intent = new Intent(AddShoppingListActivity.this, AddMarketActivity.class);
+                startActivity(intent);
+          	  
+                
+            }else {
+            	idSuper = supermercados.get(position);
+            }
+          }
          });
 	}
 
