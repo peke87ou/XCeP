@@ -90,6 +90,7 @@ public class AddShoppingListActivity extends Activity{
 		        grid.setAdapter(adapter);
 		        grid.setChoiceMode(GridView.CHOICE_MODE_SINGLE);
 			}
+			
 		});
         
 		
